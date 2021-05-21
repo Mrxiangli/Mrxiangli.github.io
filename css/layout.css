@@ -321,23 +321,23 @@ fieldset[disabled] .btn-theme {
   	[Promo Block]
 ------------------------------------------------------------------*/
 .promo-block {
-  padding: 220px 0 130px;
+  padding: 120px 0 100px;
 }
 
 .promo-block .promo-block-title {
-  font-size: 70px;
+  font-size: 10px;
   color: #fff;
   line-height: 1;
 }
 
 @media (max-width: 480px) {
   .promo-block .promo-block-title {
-    font-size: 50px;
+    font-size: 10px;
   }
 }
 
 .promo-block .promo-block-text {
-  font-size: 25px;
+  font-size: 15px;
   color: #fff;
 }
 
