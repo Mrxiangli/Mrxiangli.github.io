@@ -10,7 +10,7 @@ redirect_from:
 
 ## About me
 
-I am a second year PhD student in computer Engineering at Purdue University - West Lafayette. My research area is in the junction field of reliable edge computing and machine learning with a focus on low latency, reliable distributed system and low latency video analytics on distrbuted devices. My previous work focus on reliable low latency task offloading on hetegenous devices across heterogeneous networks, which includes both optimization problem formulation and system modeling. Moreover, my work has been carried out in physical testbed under commercial network scenarios with promising result.
+I am a second year PhD student in Computer Engineering at Purdue University - West Lafayette. My research area is in the junction field of reliable edge computing and machine learning with a focus on low latency, reliable distributed systems and low latency video analytics on distributed devices. My previous work focused on reliable low latency task offloading in heterogeneous devices across heterogeneous networks, which includes both optimization problem formulation and system modeling. Moreover, my work has been carried out in a physical testbed under commercial 4G CBRS and 5G network with promising results. Currently, I'm advised by Prof. [Saurabh Bagchi](https://engineering.purdue.edu/~sbagchi/).
 
 ## Education
 * Ph.D Computer Engineering, Purdue University - West Lafayette, 2021 - Present
