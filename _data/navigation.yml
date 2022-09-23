@@ -1,12 +1,13 @@
-# main links
+# main links links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Education"
+    url: /#education
+    
+  - title: "Publications"
+    url: /#publications
+    
+  - title: "Resume"
+    url: /files/Chuan_resume_2pages.pdf
+    
+  - title: "Contact"
+    url: /#contact
