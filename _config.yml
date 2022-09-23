@@ -83,9 +83,9 @@ author:
   name             : "Xiang Li"
   avatar           : "IMG_8489.jpeg"
   bio              : "Ph.D Student in Computer Engineering"
-  location         : "USA"
+  location         : "West Lafayette, IN, USA"
   employer         :
-  pubmed           : ""
+  pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=BEd64-AAAAAJ&hl=en"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
@@ -96,13 +96,13 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "Xiang Li"
+  github           : "https://github.com/Mrxiangli"
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
-  linkedin         :
+  linkedin         : "www.linkedin.com/in/xiangli2410"
   orcid            : #"http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
