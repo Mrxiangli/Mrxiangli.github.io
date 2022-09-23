@@ -7,13 +7,13 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Chuan Jiang"
+title                    : "Xiang Li"
 title_separator          : "-"
-name                     : &name "Chuan Jiang"
+name                     : &name "Xiang Li"
 description              : &description "personal description"
-url                      : https://secretjc.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://Mrxiangli.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "secretjc/secretjc.github.io"
+repository               : "Mrxiangli/Mrxiangli.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
 breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : 
-  avatar           : "IMG_9281.JPG"
+  avatar           : "IMG_8489.JPG"
   bio              : #"Your biography for the left-hand sidebar"
   location         : #"Location"
   employer         :
@@ -96,7 +96,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : secretjc
+  github           : Mrxiangli
   google_plus      :
   keybase          :
   instagram        :
