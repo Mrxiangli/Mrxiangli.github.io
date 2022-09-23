@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Xiang Li"
-  avatar           : "IMG_8489.png"
+  avatar           : "IMG_8489.jpeg"
   bio              : "Ph.D Student in Computer Engineering"
   location         : "USA"
   employer         :
@@ -175,7 +175,13 @@ kramdown:
 
 # Collections
 collections:
+  education:
+    output: true
+    permalink: /:collection/:path/
   teaching:
+    output: true
+    permalink: /:collection/:path/
+  contact:
     output: true
     permalink: /:collection/:path/
   publications:
