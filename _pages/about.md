@@ -21,6 +21,9 @@ I am a second year PhD student in computer Engineering at Purdue University - We
 1. [DAG-based Task Orchestration for Edge Computing](https://github.com/Mrxiangli/Mrxiangli.github.io/tree/master/files/ibdash-srds22.pdf),
 **Xiang Li**, Mustafa Abdallah; Shikhar Suryavansh (Cisco Systems); Mung Chiang, Kwang Taik Kim, Saurabh Bagchi. Accepted to appear at the 41st International Symposium on Reliable Distributed Systems (SRDS 2022), pp. 1–14, September 2022. (Acceptance rate: 24/104 = 23.1%)
 
+1. [DAG-based Task Orchestration for Edge Computing](https://github.com/Mrxiangli/Mrxiangli.github.io/tree/master/files/ibdash-srds22.pdf),
+**Xiang Li**, Mustafa Abdallah; Shikhar Suryavansh (Cisco Systems); Mung Chiang, Kwang Taik Kim, Saurabh Bagchi. Accepted to appear at the 41st International Symposium on Reliable Distributed Systems (SRDS 2022), pp. 1–14, September 2022. (Acceptance rate: 24/104 = 23.1%)
+
 ## Contact
 
 space
