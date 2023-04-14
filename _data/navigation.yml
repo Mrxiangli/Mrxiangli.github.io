@@ -5,8 +5,10 @@ main:
 
   - title: "Publications"
     url: /#publications
+  
+  - title: "Research"
+    url: /#research
 
-        
   - title: "CV/Resume"
     url: /files/Xiang_Li_Resume.pdf
     
