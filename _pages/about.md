@@ -16,11 +16,17 @@ I am a second year PhD student in Computer Engineering at Purdue University - We
 * Ph.D Computer Engineering, Purdue University - West Lafayette, 2021 - Present
 * B.S Computer Engineering (Distinction), Purdue University - West Lafayette, 2019
 
+## Research Interests
+My research interests are in the conjunction area of 
+ *  Machine learning
+ *  Video analytics on low complexity edge devices
+ *  Distributed computing system
+ *  Machine learning based diagnostic imaging
+
 
 ## Publications
-1. [DAG-based Task Orchestration for Edge Computing](https://github.com/Mrxiangli/Mrxiangli.github.io/tree/master/files/ibdash-srds22.pdf),
+1. [DAG-based Task Orchestration for Edge Computing](https://ieeexplore.ieee.org/abstract/document/9996961),
 **Xiang Li**, Mustafa Abdallah; Shikhar Suryavansh (Cisco Systems); Mung Chiang, Kwang Taik Kim, Saurabh Bagchi. Accepted to appear at the 41st International Symposium on Reliable Distributed Systems (SRDS 2022), pp. 1–14, September 2022. (Acceptance rate: 24/104 = 23.1%)
-
 
 ## Contact
 li2068 at purdue dot edu
