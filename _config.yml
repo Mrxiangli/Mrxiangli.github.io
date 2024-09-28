@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Xiang Li"
 title_separator          : "-"
 name                     : &name "Xiang Li"
-description              : &description "personal description"
+description              : &description "Research Assistant-Ph.D. Purdue University"
 url                      : https://Mrxiangli.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Mrxiangli/Mrxiangli.github.io"
@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Xiang Li"
-  avatar           : "IMG_8489.jpeg"
+  avatar           : "myimage.jpeg"
   bio              : "Ph.D Student in Computer Engineering"
   location         : "West Lafayette, IN, USA"
   employer         :
