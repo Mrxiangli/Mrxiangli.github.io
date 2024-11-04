@@ -24,7 +24,7 @@ My research interests are in the conjunction area of
 
 
 ## Publications
-1. [HopTrack: A Real-time Multi-Object Tracking System for Embedded Devices](https://arxiv.org/abs/2411.00608)
+1. [HopTrack: A Real-time Multi-Object Tracking System for Embedded Devices](https://arxiv.org/abs/2411.00608),
 **Xiang Li**, Cheng Chen, Yuan-Yao Lou, Mustafa Abdallah, Kwang Taik Kim, Saurabh Bagchi (Preprint)
 
 
