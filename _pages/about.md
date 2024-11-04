@@ -24,10 +24,14 @@ My research interests are in the conjunction area of
 
 
 ## Publications
-1. [Dynamic DAG-Application Scheduling for Multi-Tier Edge Computing in Heterogeneous Networks](https://arxiv.org/abs/2409.10839),
+1. [HopTrack: A Real-time Multi-Object Tracking System for Embedded Devices](https://arxiv.org/abs/2411.00608)
+**Xiang Li**, Cheng Chen, Yuan-Yao Lou, Mustafa Abdallah, Kwang Taik Kim, Saurabh Bagchi (Preprint)
+
+
+2. [Dynamic DAG-Application Scheduling for Multi-Tier Edge Computing in Heterogeneous Networks](https://arxiv.org/abs/2409.10839),
 **Xiang Li**, Mustafa Abdallah, Yuan-Yao Lou, Mung Chiang, Kwang Taik Kim, Saurabh Bagchi (Preprint)
 
-2. [DAG-based Task Orchestration for Edge Computing](https://ieeexplore.ieee.org/abstract/document/9996961),
+3. [DAG-based Task Orchestration for Edge Computing](https://ieeexplore.ieee.org/abstract/document/9996961),
 **Xiang Li**, Mustafa Abdallah; Shikhar Suryavansh (Cisco Systems); Mung Chiang, Kwang Taik Kim, Saurabh Bagchi. Accepted to appear at the 41st International Symposium on Reliable Distributed Systems (SRDS 2022), pp. 1–14, September 2022. (Acceptance rate: 24/104 = 23.1%)
 
 
