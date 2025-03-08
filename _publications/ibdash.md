@@ -1,0 +1,10 @@
+---
+title: "DAG-based Task Orchestration for Edge Computing"
+collection: publications
+date: 2022-6-1   
+venue: '41st International Symposium on Reliable Distributed Systems (Acceptance rate: 24/104 = 23.1%)'
+paperurl: 'https://ieeexplore.ieee.org/abstract/document/9996961'
+codeurl: 'https://github.com/Mrxiangli/IBDASH---Task-Orchestration-for-DAG-based-Applications'
+authors: Xiang Li, Mustafa Abdallah; Shikhar Suryavansh, Mung Chiang, Kwang Taik Kim, Saurabh Bagchi
+Abstract: 'Edge computing promises to exploit underlying computation resources closer to users to help run latency-sensitive applications such as augmented reality and video analytics. However, one key missing piece has been how to incorporate personally owned, unmanaged devices into a usable edge computing system. The primary challenges arise due to the heterogeneity, lack of interference management, and unpredictable availability of such devices. In this paper we propose an orchestration framework IBDASH, which orchestrates application tasks on an edge system that comprises a mix of commercial and personal edge devices. IBDASH targets reducing both end-to-end latency of execution and probability of failure for applications that have dependency among tasks, captured by directed acyclic graphs (DAGs). IBDASH takes memory constraints of each edge device and network bandwidth into consideration. To assess the effectiveness of IBDASH, we run real application tasks on real edge devices with widely varying capabilities. We feed these measurements into a simulator that runs IBDASH at scale. Compared to three state-of-the-art edge orchestration schemes and two intuitive baselines, IBDASH reduces the end-to-end latency and probability of failure, by 14% and 41% on average respectively. The main takeaway from our work is that it is feasible to combine personal and commercial devices into a usable edge computing platform, one that delivers low and predictable latency and high availability.'
+---

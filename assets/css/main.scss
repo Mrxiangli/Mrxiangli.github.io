@@ -39,3 +39,33 @@
 @import "vendor/font-awesome/brands";
 @import "vendor/magnific-popup/magnific-popup";
 @import "print";
+
+.photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  
+    .photo {
+      flex: 1 1 calc(33% - 20px); /* Adjust for number of photos per row */
+      box-sizing: border-box;
+    }
+  
+    .photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .view-full-album {
+    font-size: 14px;       /* Set the font size to avoid inheriting the h3 style */
+    font-weight: normal;   /* Ensure the text is not bold like h3 */
+    color: #333;           /* Set the color to match the default text color */
+    text-decoration: none; /* Remove underline from the link */
+    vertical-align: middle; /* Ensure vertical alignment with the title */
+  }
+  
+  .view-full-album:hover {
+    text-decoration: underline; /* Optional: underline the link when hovered */
+  }

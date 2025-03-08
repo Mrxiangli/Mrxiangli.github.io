@@ -1,16 +1,14 @@
 # main links links
 main:
-  - title: "Education"
-    url: /#education
-
-  - title: "Publications"
-    url: /#publications
   
   - title: "Research"
-    url: /#research
+    url: /research/
+  
+  - title: "Publication"
+    url: /publications/
 
   - title: "CV/Resume"
     url: /files/Xiang_Li_Resume.pdf
     
-  - title: "Contact"
-    url: /#contact
+  - title: "Albums"
+    url: /photography/

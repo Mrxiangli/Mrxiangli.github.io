@@ -1,0 +1,10 @@
+---
+title: "HopTrack: A Real-time Multi-Object Tracking System for Embedded Devices"
+collection: publications
+date: 2024-11-1   
+venue: 'Under review for IEEE Journal on Selected Areas in Communications'
+paperurl: 'https://arxiv.org/abs/2411.00608'
+codeurl: 'https://github.com/Mrxiangli/HopTrack'  # Add your code URL here
+authors: Xiang Li, Cheng Chen, Yuan-Yao Lou, Mustafa Abdallah, Kwang Taik Kim, Saurabh Bagchi
+Abstract: 'Multi-Object Tracking (MOT) poses significant challenges in computer vision. Despite its wide application in robotics, autonomous driving, and smart manufacturing, there is limited literature addressing the specific challenges of running MOT on embedded devices. State-of-the-art MOT trackers designed for high-end GPUs often experience low processing rates (<11fps) when deployed on embedded devices. Existing MOT frameworks for embedded devices proposed strategies such as fusing the detector model with the feature embedding model to reduce inference latency or combining different trackers to improve tracking accuracy, but tend to compromise one for the other. This paper introduces HopTrack, a real-time multi-object tracking system tailored for embedded devices. Our system employs a novel discretized static and dynamic matching approach along with an innovative content-aware dynamic sampling technique to enhance tracking accuracy while meeting the real-time requirement. Compared with the best high-end GPU modified baseline Byte (Embed) and the best existing baseline on embedded devices MobileNet-JDE, HopTrack achieves a processing speed of up to 39.29 fps on NVIDIA AGX Xavier with a multi-object tracking accuracy (MOTA) of up to 63.12% on the MOT16 benchmark, outperforming both counterparts by 2.15% and 4.82%, respectively. Additionally, the accuracy improvement is coupled with the reduction in energy consumption (20.8%), power (5%), and memory usage (8%), which are crucial resources on embedded devices. HopTrack is also detector agnostic allowing the flexibility of plug-and-play.'
+---

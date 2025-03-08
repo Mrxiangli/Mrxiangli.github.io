@@ -1,39 +1,24 @@
 ---
 permalink: /
-title: "Xiang Li's Homepage"
-excerpt: "About me"
+title:
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-## About me
+<span style="font-size: 0.8em;">I'm a Computer Engineering PhD student at Purdue University - West Lafayette with expertise in machine learning, embedded systems, and edge computing. My research at Purdue's Dependable Computing System Lab focuses on optimizing large language model inference on GPU clusters and developing efficient AI solutions for resource-constrained embedded devices.
+My professional experience includes working as a Machine Learning Research Intern at Houston Methodist Research Institute and as a Software/Control Engineer at Cummins Inc.</span><br>
 
-I am a Ph.D. student in Computer Engineering at Purdue University - West Lafayette. My research interests include optimizing machine learning algorithms for low-latency inference on edge devices, machine learning for medical imaging, and efficient LLM inference in GPU clusters.
+### Education
+<span style="font-size: 0.8em;">Ph.D Computer Engineering, Purdue University - West Lafayette, 2021 - Present
+</span><br>
+<span style="font-size: 0.8em;">B.S Computer Engineering (Distinction), Purdue University - West Lafayette, May 2019
+</span><br>
 
-## Education
-* Ph.D Computer Engineering, Purdue University - West Lafayette, Ongoing
-* B.S Computer Engineering (Distinction), Purdue University - West Lafayette
-
-## Research Interests
-My research interests are in the conjunction area of 
- *  Video analytics on low complexity edge devices
- *  Machine learning based diagnostic imaging
- *  Efficient LLM inference
-
-
-## Publications
-1. [HopTrack: A Real-time Multi-Object Tracking System for Embedded Devices](https://arxiv.org/abs/2411.00608),
-**Xiang Li**, Cheng Chen, Yuan-Yao Lou, Mustafa Abdallah, Kwang Taik Kim, Saurabh Bagchi (Preprint)
-
-
-2. [Dynamic DAG-Application Scheduling for Multi-Tier Edge Computing in Heterogeneous Networks](https://arxiv.org/abs/2409.10839),
-**Xiang Li**, Mustafa Abdallah, Yuan-Yao Lou, Mung Chiang, Kwang Taik Kim, Saurabh Bagchi (Preprint)
-
-3. [DAG-based Task Orchestration for Edge Computing](https://ieeexplore.ieee.org/abstract/document/9996961),
-**Xiang Li**, Mustafa Abdallah; Shikhar Suryavansh (Cisco Systems); Mung Chiang, Kwang Taik Kim, Saurabh Bagchi. Accepted to appear at the 41st International Symposium on Reliable Distributed Systems (SRDS 2022), pp. 1–14, September 2022. (Acceptance rate: 24/104 = 23.1%)
-
-
-## Contact
-li2068 at purdue dot edu
+### Research Interests
+<ul style="font-size: 0.8em;">
+  <li>Efficient LLM inference</li>
+  <li>Video analytics on low complexity edge devices</li>
+  <li>Machine learning based diagnostic imaging</li>
+</ul>
