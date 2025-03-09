@@ -69,3 +69,103 @@
   .view-full-album:hover {
     text-decoration: underline; /* Optional: underline the link when hovered */
   }
+
+  .research-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .research-link {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Keep text color consistent */
+    display: block; /* Make the entire div clickable */
+  }
+  
+  .research-topic {
+    background: #f8f9fa;
+    border-left: 5px solid #6c757d;  /* Gray border */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    min-height: 150px;
+  
+    &:hover {
+      transform: translateY(-3px);
+      background: #e9ecef; /* Light hover effect */
+    }
+  
+    h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+      text-decoration: none; /* Ensure no underline appears */
+    }
+  }
+  .research-topic a{
+    text-decoration: none !important; /* Ensure no underline in any state */
+  }
+  
+  .research-topic a:visited,
+  .research-topic a:link,
+  .research-topic a:hover,
+  .research-topic a:active {
+    text-decoration: none !important; /* Ensure no underline in any state */
+  }
+
+  .research-topic p {
+    line-height: 1.5;
+  }
+  
+  a:visited, a:hover, a:active {
+    text-decoration: none !important; /* Ensure no underline in any state */
+  }
+
+  .research-topic {
+    width: 100%;  // Adjust container width to 100% or any desired width
+    max-width: 1200px; // Optional: Set a max width if you want to control the size
+    margin: 0 auto; // Center the container
+  }
+  
+  .research-date {
+      font-size: 0.8em;
+      color: gray;
+      font-weight: normal;
+      margin-top: 5px;  // Space between the title and date
+      margin-bottom: 10px;  // Optional: Add space below the date
+    }
+  
+  .research-star {
+      color: gold;  /* Color the star */
+      margin-right: 10px;  /* Space between the star and the title */
+      font-size: 1.2em;   /* Adjust size of the star */
+    }
+  
+    .photo-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px; // Adds spacing between images
+      justify-content: center;
+    }
+    
+    .photo {
+      overflow: hidden; // Ensures no overflow beyond the container
+      border-radius: 8px; // Optional: Adds rounded corners
+    }
+    
+    .photo img {
+      width: 100%;
+      height: auto;
+      transition: transform 0.3s ease-in-out; // Smooth transition for zoom
+    }
+    
+    .photo:hover img {
+      transform: scale(1.1); // Zoom-in effect
+    }
