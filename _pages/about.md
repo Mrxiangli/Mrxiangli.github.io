@@ -10,13 +10,25 @@ layout: single
 ---
 
 <span style="font-size: 0.8em;">I'm a Computer Engineering PhD student at Purdue University - West Lafayette with expertise in machine learning, embedded systems, and edge computing. My research at Purdue's Dependable Computing System Lab focuses on optimizing large language model inference on GPU clusters and developing efficient AI solutions for resource-constrained embedded devices.
-My professional experience includes working as a Machine Learning Research Intern at Houston Methodist Research Institute and as a Software/Control Engineer at Cummins Inc.</span><br>
+</span><br>
 
 ### Education
 <span style="font-size: 0.8em;">Ph.D Computer Engineering, Purdue University - West Lafayette, 2021 - Present
 </span><br>
 <span style="font-size: 0.8em;">B.S Computer Engineering (Distinction), Purdue University - West Lafayette, May 2019
 </span><br>
+
+### Professional Experience
+
+<ul style="font-size: 0.8em;">
+  <li>
+  <strong>Machine Learning Research Intern</strong>, <em>Houston Methodist Research Institute</em>, May 2023 - Aug 2023  
+  </li>
+
+  <li><strong>Software/Control Engineer</strong>, <em>Cummins.Inc</em>, June 2019 - July 2021  
+  </li>
+</ul>
+
 
 ### Research Interests
 <ul style="font-size: 0.8em;">
