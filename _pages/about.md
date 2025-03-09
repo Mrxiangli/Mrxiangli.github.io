@@ -2,9 +2,11 @@
 permalink: /
 title:
 author_profile: true
+analytics: true
 redirect_from: 
   - /about/
   - /about.html
+layout: single
 ---
 
 <span style="font-size: 0.8em;">I'm a Computer Engineering PhD student at Purdue University - West Lafayette with expertise in machine learning, embedded systems, and edge computing. My research at Purdue's Dependable Computing System Lab focuses on optimizing large language model inference on GPU clusters and developing efficient AI solutions for resource-constrained embedded devices.

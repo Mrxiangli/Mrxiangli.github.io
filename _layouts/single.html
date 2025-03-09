@@ -14,6 +14,8 @@ layout: default
   {% endunless %}
 {% endif %}
 
+{% include analytics.html %}
+
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -48,7 +50,7 @@ layout: default
         {% elsif page.citation %}
           <p>Recommended citation: {{ page.citation }} </p>
         {% endif %}
-    
+          
         </header>
       {% endunless %}
 
