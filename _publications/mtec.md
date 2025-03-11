@@ -2,7 +2,7 @@
 title: "Dynamic DAG-Application Scheduling for Multi-Tier Edge Computing in Heterogeneous Networks"
 collection: publications
 date: 2024-9-27   
-venue: 'axRiv'
+venue: 'arXiv'
 paperurl: 'https://arxiv.org/abs/2409.10839'
 codeurl: ''
 authors: Xiang Li, Mustafa Abdallah, Yuan-Yao Lou, Mung Chiang, Kwang Taik Kim, Saurabh Bagchi
