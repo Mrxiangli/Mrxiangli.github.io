@@ -8,7 +8,10 @@ main:
     url: /publications/
 
   - title: "CV/Resume"
-    url: /files/Xiang_Li_Resume.pdf
+    url: /files/Xiang_Li_CV.pdf
+  
+  - title: "Blog"
+    url: /blog/
     
   - title: "Albums"
     url: /photography/
