@@ -17,58 +17,71 @@ title: Photo Album
 </div>
 
 <script>
+  console.log("Script initializing..."); // Debug 1
+
   // 1. Get folder from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const targetFolder = urlParams.get('folder');
-  console.log(urlParams);
-  console.log(targetFolder);
+  console.log("Target Folder:", targetFolder);
 
-  // --- NEW: Load titles from map_locations.yml ---
-  // We use Liquid to generate a JavaScript array from your YAML data
-  const mapLocations = [
-    {% for pin in site.data.map_locations %}
-    {
-      "title": "{{ pin.title | escape }}",
-      "link": "{{ pin.link }}"
-    }{% unless forloop.last %},{% endunless %}
-    {% endfor %}
-  ];
-
-  // 2. Set the Title
+  // 2. Load titles securely using Liquid jsonify
+  const mapLocations = {{ site.data.map_locations | jsonify }};
+  
+  // 3. Set the Title
   let pageTitle = "Untitled Album";
 
-  if(targetFolder) {
-    // A. Try to find the exact title from your YAML file
-    // We look for a link that matches the current folder path
-    const match = mapLocations.find(loc => loc.link.includes(targetFolder));
+  if (targetFolder) {
+    // Normalize paths for comparison (remove leading slashes)
+    const cleanTarget = targetFolder.replace(/^\//, '');
     
+    // Find match in YAML data
+    const match = mapLocations.find(loc => {
+        // Safe check: ensure link exists before checking
+        return loc.link && loc.link.replace(/^\//, '').includes(cleanTarget);
+    });
     
     if (match) {
       pageTitle = match.title;
     } else {
-      // B. Fallback: If not found in YAML, format the folder name nicely
-      const folderName = targetFolder.split('/').filter(Boolean).pop();
-      pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      // Fallback formatting
+      const parts = cleanTarget.split('/');
+      const folderName = parts[parts.length - 1] || parts[parts.length - 2]; // Handle trailing slash
+      if (folderName) {
+         pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      }
     }
   }
 
-  // Apply the title
   document.getElementById('album-title').innerText = pageTitle;
   document.title = pageTitle + " - Photography";
 
-  // 3. Fetch images (Same logic as before)
-  fetch('/assets/photos.json?v=' + new Date().getTime())
-    .then(response => response.json())
+  // 4. Fetch images with Relative Path
+  // We use relative path "../../" assuming you are at /photography/album/
+  fetch('../../assets/photos.json?v=' + new Date().getTime())
+    .then(response => {
+      console.log("Fetch Status:", response.status); // Debug 2
+      if (!response.ok) throw new Error("File not found (404)");
+      return response.json();
+    })
     .then(data => {
+      console.log("Photos loaded:", data.length); // Debug 3
       const container = document.getElementById('gallery-container');
+      
       const albumImages = data.filter(img => {
         if (!img.path) return false;
-        // Convert both to lowercase before checking
-        return img.path.toLowerCase().includes(targetFolder.toLowerCase());
+        if (!targetFolder) return false;
+
+        // ROBUST MATCHING: Remove all slashes and case differences
+        const p1 = img.path.toLowerCase().replace(/^\//, '');
+        const p2 = targetFolder.toLowerCase().replace(/^\//, '');
+        
+        return p1.includes(p2);
       });
 
+      console.log("Matches found:", albumImages.length); // Debug 4
+
       if (albumImages.length === 0) {
-        container.innerHTML = "<p style='color:#666; font-style:italic;'>No photos found in this folder.</p>";
+        container.innerHTML = "<p>No photos found. Checked path: " + targetFolder + "</p>";
         return;
       }
 
@@ -77,12 +90,11 @@ title: Photo Album
         photoDiv.className = 'photo';
         
         const link = document.createElement('a');
-        link.href = img.path; 
+        // Ensure path starts with / if needed, or use relative
+        link.href = img.path.startsWith('/') ? img.path : '/' + img.path; 
         
         const imgTag = document.createElement('img');
-        imgTag.src = img.path;
-        console.log(img.path)
-        imgTag.alt = "Photo";
+        imgTag.src = img.path.startsWith('/') ? img.path : '/' + img.path;
         imgTag.loading = "lazy";
         
         link.appendChild(imgTag);
@@ -91,6 +103,7 @@ title: Photo Album
       });
     })
     .catch(err => {
-      console.error('Error:', err);
+      console.error('Script Error:', err);
+      document.getElementById('gallery-container').innerHTML = "<p>Error loading photos: " + err.message + "</p>";
     });
 </script>
