@@ -20,6 +20,8 @@ title: Photo Album
   // 1. Get folder from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const targetFolder = urlParams.get('folder');
+  console.log(urlParams);
+  console.log(targetFolder);
 
   // --- NEW: Load titles from map_locations.yml ---
   // We use Liquid to generate a JavaScript array from your YAML data
@@ -39,6 +41,7 @@ title: Photo Album
     // A. Try to find the exact title from your YAML file
     // We look for a link that matches the current folder path
     const match = mapLocations.find(loc => loc.link.includes(targetFolder));
+    
     
     if (match) {
       pageTitle = match.title;
