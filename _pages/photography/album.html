@@ -70,21 +70,19 @@ title: Photo Album
       }
 
       albumImages.forEach(img => {
-        const photoDiv = document.createElement('div');
-        photoDiv.className = 'photo';
-        
-        const link = document.createElement('a');
-        link.href = img.path; 
+        // ... (your existing code) ...
         
         const imgTag = document.createElement('img');
         imgTag.src = img.path;
-        imgTag.alt = "Photo";
-        imgTag.loading = "lazy";
         
-        link.appendChild(imgTag);
-        photoDiv.appendChild(link);
-        container.appendChild(photoDiv);
-      });
+        // DEBUG: Print the exact URL to the console
+        console.log("Attempting to load:", imgTag.src); 
+
+        // ERROR HANDLER: If the image fails, turn the box red
+        imgTag.onerror = function() {
+           this.parentNode.parentNode.style.border = "2px solid red";
+           console.error("Failed to load image:", this.src);
+        };
     })
     .catch(err => {
       console.error('Error:', err);
