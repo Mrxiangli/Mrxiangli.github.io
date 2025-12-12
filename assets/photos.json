@@ -15,8 +15,7 @@ permalink: /assets/photos.json
 
   {% for file in image_files %}
     {
-      "path": "{{ file.path }}",
-      "name": "{{ file.name }}"
+      "path": "{{ file.path }}"
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}
 ]
