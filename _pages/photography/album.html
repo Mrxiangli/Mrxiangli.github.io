@@ -17,71 +17,82 @@ title: Photo Album
 </div>
 
 <script>
-  console.log("Script initializing..."); // Debug 1
+  console.log("Script initializing...");
 
   // 1. Get folder from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const targetFolder = urlParams.get('folder');
   console.log("Target Folder:", targetFolder);
 
-  // 2. Load titles securely using Liquid jsonify
-  const mapLocations = {{ site.data.map_locations | jsonify }};
-  
-  // 3. Set the Title
-  let pageTitle = "Untitled Album";
+  // --- SAFE LOADING START ---
+  // If site.data.map_locations is missing, this defaults to null.
+  // We use '|| []' to ensure it's always an array, preventing the crash.
+  const rawData = {{ site.data.map_locations | jsonify }};
+  const mapLocations = rawData || [];
+  console.log("Map Locations Loaded:", mapLocations.length);
+  // --- SAFE LOADING END ---
 
-  if (targetFolder) {
-    // Normalize paths for comparison (remove leading slashes)
-    const cleanTarget = targetFolder.replace(/^\//, '');
-    
-    // Find match in YAML data
-    const match = mapLocations.find(loc => {
-        // Safe check: ensure link exists before checking
-        return loc.link && loc.link.replace(/^\//, '').includes(cleanTarget);
-    });
-    
-    if (match) {
-      pageTitle = match.title;
-    } else {
-      // Fallback formatting
-      const parts = cleanTarget.split('/');
-      const folderName = parts[parts.length - 1] || parts[parts.length - 2]; // Handle trailing slash
-      if (folderName) {
-         pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+  // 2. Set the Title (Wrapped in Try/Catch so it never kills the script)
+  try {
+    let pageTitle = "Untitled Album";
+
+    if (targetFolder) {
+      const cleanTarget = targetFolder.replace(/^\//, '');
+      
+      // Safety check: ensure mapLocations has data before searching
+      if (mapLocations.length > 0) {
+        const match = mapLocations.find(loc => {
+            return loc.link && loc.link.replace(/^\//, '').includes(cleanTarget);
+        });
+        if (match) pageTitle = match.title;
+      }
+      
+      // Fallback if no match found
+      if (pageTitle === "Untitled Album") {
+        const parts = cleanTarget.split('/');
+        const folderName = parts[parts.length - 1] || parts[parts.length - 2]; 
+        if (folderName) {
+           pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+        }
       }
     }
+    
+    document.getElementById('album-title').innerText = pageTitle;
+    document.title = pageTitle + " - Photography";
+    
+  } catch (err) {
+    console.error("Non-fatal error setting title:", err);
   }
 
-  document.getElementById('album-title').innerText = pageTitle;
-  document.title = pageTitle + " - Photography";
+  // 3. Fetch images (Using Relative Path)
+  // We use '../' to traverse up from /photography/album/ to root, then to assets
+  const fetchUrl = '../../assets/photos.json?v=' + new Date().getTime();
+  console.log("Attempting fetch from:", fetchUrl);
 
-  // 4. Fetch images with Relative Path
-  // We use relative path "../../" assuming you are at /photography/album/
-  fetch('../../assets/photos.json?v=' + new Date().getTime())
+  fetch(fetchUrl)
     .then(response => {
-      console.log("Fetch Status:", response.status); // Debug 2
-      if (!response.ok) throw new Error("File not found (404)");
+      console.log("Fetch response status:", response.status);
+      if (!response.ok) throw new Error("HTTP " + response.status + " - File not found");
       return response.json();
     })
     .then(data => {
-      console.log("Photos loaded:", data.length); // Debug 3
+      console.log("Photos JSON loaded. Items:", data.length);
       const container = document.getElementById('gallery-container');
       
       const albumImages = data.filter(img => {
-        if (!img.path) return false;
-        if (!targetFolder) return false;
-
-        // ROBUST MATCHING: Remove all slashes and case differences
+        if (!img.path || !targetFolder) return false;
+        
+        // Robust comparison: remove leading slashes and lowercase both
         const p1 = img.path.toLowerCase().replace(/^\//, '');
         const p2 = targetFolder.toLowerCase().replace(/^\//, '');
         
         return p1.includes(p2);
       });
 
-      console.log("Matches found:", albumImages.length); // Debug 4
+      console.log("Filtered images count:", albumImages.length);
 
       if (albumImages.length === 0) {
-        container.innerHTML = "<p>No photos found. Checked path: " + targetFolder + "</p>";
+        container.innerHTML = "<p>No photos found. (Checked path: " + targetFolder + ")</p>";
         return;
       }
 
@@ -90,11 +101,12 @@ title: Photo Album
         photoDiv.className = 'photo';
         
         const link = document.createElement('a');
-        // Ensure path starts with / if needed, or use relative
-        link.href = img.path.startsWith('/') ? img.path : '/' + img.path; 
+        // Fix path prefix if needed
+        const correctPath = img.path.startsWith('/') ? img.path : '/' + img.path;
+        link.href = correctPath; 
         
         const imgTag = document.createElement('img');
-        imgTag.src = img.path.startsWith('/') ? img.path : '/' + img.path;
+        imgTag.src = correctPath;
         imgTag.loading = "lazy";
         
         link.appendChild(imgTag);
@@ -103,7 +115,7 @@ title: Photo Album
       });
     })
     .catch(err => {
-      console.error('Script Error:', err);
-      document.getElementById('gallery-container').innerHTML = "<p>Error loading photos: " + err.message + "</p>";
+      console.error('CRITICAL FETCH ERROR:', err);
+      document.getElementById('gallery-container').innerHTML = "<p>Error loading gallery: " + err.message + "</p>";
     });
 </script>
