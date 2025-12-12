@@ -126,3 +126,33 @@
       text-align: center;
     }
   }
+
+  #photo-map {
+    height: 400px;
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1;
+  }
+  
+  /* Ensure Leaflet images don't get messed up by global styles */
+  .leaflet-pane img {
+    box-shadow: none !important; 
+    border-radius: 0 !important;
+  }
+  
+  .map-popup-img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    border-radius: 4px;
+    margin-top: 5px;
+    display: block;
+  }
+  
+  .map-popup-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
