@@ -54,7 +54,7 @@ title: Photo Album
   document.title = pageTitle + " - Photography";
 
   // 3. Fetch images (Same logic as before)
-  fetch('/assets/photos.json')
+  fetch('/assets/photos.json?v=' + new Date().getTime())
     .then(response => response.json())
     .then(data => {
       const container = document.getElementById('gallery-container');
