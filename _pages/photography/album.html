@@ -4,51 +4,11 @@ permalink: /photography/album/
 title: Photo Album
 ---
 
-<style>
-  /* Styling to ensure the error messages look good */
-  .album-container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  .album-header {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-  }
-  .back-btn {
-    text-decoration: none;
-    font-size: 0.9rem;
-    color: #666;
-    border: 1px solid #ddd;
-    padding: 5px 10px;
-    border-radius: 4px;
-  }
-  .photo-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-  }
-  .photo {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background: #f0f0f0; /* Grey background while loading */
-    aspect-ratio: 3/2;
-  }
-  .photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-</style>
-
 <div class="album-container">
   
   <div class="album-header">
+    <h1 id="album-title" class="album-title">Loading...</h1>
     <a href="/photography/" class="back-btn">← Back to Map</a>
-    <h1 id="album-title" style="margin-top:10px;">Loading Album...</h1>
   </div>
 
   <div id="gallery-container" class="photo-gallery">
@@ -57,26 +17,12 @@ title: Photo Album
 </div>
 
 <script>
-  // Helper to show errors on the actual screen, not just console
-  function showError(message) {
-    const container = document.getElementById('gallery-container');
-    container.innerHTML = `<div style="grid-column: 1/-1; padding: 20px; background: #fff0f0; color: #d00; border: 1px solid #fcc; border-radius: 5px;">
-      <strong>Error:</strong> ${message}
-    </div>`;
-    document.getElementById('album-title').innerText = "Album Error";
-  }
-
-  // 1. Get folder from URL
+  // 1. Get folder from URL parameter
   const urlParams = new URLSearchParams(window.location.search);
   const targetFolder = urlParams.get('folder');
 
-  // CRITICAL CHECK: Did the URL actually have a ?folder= parameter?
-  if (!targetFolder) {
-    showError("No folder specified in the URL. Go back to the map and click a pin again.");
-    throw new Error("No folder param"); // Stop script
-  }
-
-  // 2. Load Titles from YAML (Liquid runs before JS)
+  // --- NEW: Load titles from map_locations.yml ---
+  // We use Liquid to generate a JavaScript array from your YAML data
   const mapLocations = [
     {% for pin in site.data.map_locations %}
     {
@@ -86,53 +32,53 @@ title: Photo Album
     {% endfor %}
   ];
 
-  // 3. Set the Page Title
-  let pageTitle = "Unknown Album";
-  
-  // Try to find matching title in YAML
-  const match = mapLocations.find(loc => loc.link && loc.link.includes(targetFolder));
-  
-  if (match) {
-    pageTitle = match.title;
-  } else {
-    // Fallback: Format the folder name (e.g. /images/us_travel -> Us Travel)
-    const parts = targetFolder.split('/').filter(Boolean);
-    const folderName = parts.length > 0 ? parts[parts.length - 1] : "Album";
-    pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  // 2. Set the Title
+  let pageTitle = "Untitled Album";
+
+  if(targetFolder) {
+    // A. Try to find the exact title from your YAML file
+    // We look for a link that matches the current folder path
+    const match = mapLocations.find(loc => loc.link.includes(targetFolder));
+    
+    if (match) {
+      pageTitle = match.title;
+    } else {
+      // B. Fallback: If not found in YAML, format the folder name nicely
+      const folderName = targetFolder.split('/').filter(Boolean).pop();
+      pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
   }
 
+  // Apply the title
   document.getElementById('album-title').innerText = pageTitle;
   document.title = pageTitle + " - Photography";
 
-  // 4. Fetch the photos.json index
-  fetch('{{ "/assets/photos.json" | relative_url }}')
-    .then(response => {
-      if (!response.ok) throw new Error("Could not find assets/photos.json file.");
-      return response.json();
-    })
+  // 3. Fetch images (Same logic as before)
+  fetch('/assets/photos.json')
+    .then(response => response.json())
     .then(data => {
       const container = document.getElementById('gallery-container');
-      
-      // Filter images that contain the target folder string
-      const albumImages = data.filter(img => img.path && img.path.includes(targetFolder));
+      const albumImages = data.filter(img => {
+        if (!img.path) return false;
+        // Convert both to lowercase before checking
+        return img.path.toLowerCase().includes(targetFolder.toLowerCase());
+      });
 
       if (albumImages.length === 0) {
-        showError(`No photos found matching folder: "<strong>${targetFolder}</strong>". <br>Check your map_locations.yml link.`);
+        container.innerHTML = "<p style='color:#666; font-style:italic;'>No photos found in this folder.</p>";
         return;
       }
 
-      // Render Images
-      container.innerHTML = ""; // Clear "Loading..." or errors
-      
       albumImages.forEach(img => {
         const photoDiv = document.createElement('div');
         photoDiv.className = 'photo';
         
         const link = document.createElement('a');
-        link.href = img.path; // Click to open full image
+        link.href = img.path; 
         
         const imgTag = document.createElement('img');
         imgTag.src = img.path;
+        imgTag.alt = "Photo";
         imgTag.loading = "lazy";
         
         link.appendChild(imgTag);
@@ -141,7 +87,6 @@ title: Photo Album
       });
     })
     .catch(err => {
-      console.error(err);
-      showError("System Error: " + err.message);
+      console.error('Error:', err);
     });
 </script>
