@@ -19,9 +19,14 @@
 .page {
   
   @include breakpoint($large) {
-    @include span(10 of 12 last);
-    @include prefix(0.5 of 12);
-    @include suffix(2 of 12);
+    /* 1. MOVE RIGHT: Increase left gap to 2 columns to clear the sidebar completely */
+    @include prefix(1.5 of 12);
+
+    /* 2. FILL SPACE: Use the remaining 10 columns for content */
+    @include span(10.5 of 12 last);
+
+    /* 3. NO RIGHT GAP: Remove the empty space on the right */
+    @include suffix(0);
   }
 
   .page__inner-wrap {

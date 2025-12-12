@@ -1,0 +1,88 @@
+---
+layout: default
+permalink: /photography/album/
+title: Photo Album
+---
+
+<div class="album-container">
+  
+  <div class="album-header">
+    <h1 id="album-title" class="album-title">Loading...</h1>
+    <a href="/photography/" class="back-btn">← Back to Map</a>
+  </div>
+
+  <div id="gallery-container" class="photo-gallery">
+    </div>
+
+</div>
+
+<script>
+  // 1. Get folder from URL parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const targetFolder = urlParams.get('folder');
+
+  // --- NEW: Load titles from map_locations.yml ---
+  // We use Liquid to generate a JavaScript array from your YAML data
+  const mapLocations = [
+    {% for pin in site.data.map_locations %}
+    {
+      "title": "{{ pin.title | escape }}",
+      "link": "{{ pin.link }}"
+    }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  // 2. Set the Title
+  let pageTitle = "Untitled Album";
+
+  if(targetFolder) {
+    // A. Try to find the exact title from your YAML file
+    // We look for a link that matches the current folder path
+    const match = mapLocations.find(loc => loc.link.includes(targetFolder));
+    
+    if (match) {
+      pageTitle = match.title;
+    } else {
+      // B. Fallback: If not found in YAML, format the folder name nicely
+      const folderName = targetFolder.split('/').filter(Boolean).pop();
+      pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    }
+  }
+
+  // Apply the title
+  document.getElementById('album-title').innerText = pageTitle;
+  document.title = pageTitle + " - Photography";
+
+  // 3. Fetch images (Same logic as before)
+  fetch('/assets/photos.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('gallery-container');
+      const albumImages = data.filter(img => img.path.includes(targetFolder));
+
+      if (albumImages.length === 0) {
+        container.innerHTML = "<p style='color:#666; font-style:italic;'>No photos found in this folder.</p>";
+        return;
+      }
+
+      albumImages.forEach(img => {
+        const photoDiv = document.createElement('div');
+        photoDiv.className = 'photo';
+        
+        const link = document.createElement('a');
+        link.href = img.path; 
+        
+        const imgTag = document.createElement('img');
+        imgTag.src = img.path;
+        imgTag.alt = "Photo";
+        imgTag.loading = "lazy";
+        
+        link.appendChild(imgTag);
+        photoDiv.appendChild(link);
+        container.appendChild(photoDiv);
+      });
+    })
+    .catch(err => {
+      console.error('Error:', err);
+    });
+</script>

@@ -1,0 +1,115 @@
+/* _sass/publications.scss */
+
+.publications-container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.pub-card {
+  background: #fff;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+  position: relative;
+  transition: box-shadow 0.2s ease;
+}
+
+.pub-card:hover {
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+.pub-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 8px;
+  line-height: 1.3;
+}
+
+.pub-authors {
+  font-size: 0.8rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+/* NAME HIGHLIGHT STYLE */
+.pub-authors strong {
+  font-weight: 700;
+  color: #24292e;      /* Bold and Dark */
+  text-decoration: none;
+  border-bottom: none; /* No underline */
+}
+
+.pub-venue {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+/* ABSTRACT STYLING */
+.pub-abstract-container {
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.pub-abstract-text {
+  line-height: 1.6em;
+  font-size: 0.85rem;
+  color: #444;
+  max-height: 8em; /* 5 lines * 1.6em */
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.fade-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(248,249,250,0), rgba(248,249,250,1));
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+/* EXPANDED STATE */
+.pub-abstract-container.expanded .pub-abstract-text {
+  max-height: none;
+}
+
+.pub-abstract-container.expanded .fade-overlay {
+  opacity: 0;
+}
+
+/* BUTTONS */
+.pub-buttons {
+  margin-top: 15px;
+  display: flex;
+  align-items: center; /* Ensures badges align with buttons */
+  gap: 10px;
+}
+
+.pub-btn {
+  text-decoration: none !important;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid #ddd;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.pub-btn:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
+}

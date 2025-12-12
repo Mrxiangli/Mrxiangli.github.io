@@ -1,0 +1,78 @@
+/* _sass/research.scss */
+
+.research-container {
+    width: 100%;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  
+  /* THE CARD */
+  .research-card {
+    background: #fff;
+    border: 1px solid #e1e4e8;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    
+    /* --- DELETED THE BLUE BORDER LINE HERE --- */
+    /* border-left: 5px solid #0366d6; */ 
+  }
+  
+  .research-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.08);
+  }
+  
+  /* LINK WRAPPER (Optional: makes the whole card clickable if you use <a>) */
+  a.research-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  
+  /* HEADER AREA */
+  .research-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    flex-wrap: wrap; /* responsive safety */
+  }
+  
+  .research-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #24292e;
+    margin: 0;
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .research-date {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #586069;
+    background-color: #f1f8ff; /* Light blue background */
+    color: #0366d6;           /* Blue text */
+    padding: 4px 10px;
+    border-radius: 20px;      /* Pill shape */
+    white-space: nowrap;
+    margin-top: 2px;
+  }
+  
+  /* CONTENT */
+  .research-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #444;
+  }
+  
+  /* ICON (Optional flair) */
+  .research-icon {
+    color: #0366d6;
+    margin-right: 8px;
+    opacity: 0.8;
+  }
