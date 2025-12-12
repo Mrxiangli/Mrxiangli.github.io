@@ -1,59 +1,63 @@
 - title: "Dumpling"
   lat: 29.754646636336762
   lng: -95.36373224730274
-  link: "photography/album/?folder=images/dumpling"
-  image: "images/dumpling/DSC_0285.JPEG"
+  link: "/photography/album/?folder=/images/dumpling"
+  # You can pick a specific image to show in the popup
+  image: "/images/dumpling/DSC_0285.JPEG" 
 
 - title: "Yellowstone National Park"
   lat: 44.4280
   lng: -110.5885
-  link: "photography/album/?folder=images/us_travel/yellowstone"
-  image: "images/us_travel/yellowstone/IMG_7930.JPEG"
+  link: "/photography/album/?folder=/images/us_travel/yellowstone"
+  image: "/images/us_travel/yellowstone/IMG_7930.JPEG"
 
 - title: "Acadia National Park"
   lat:  44.34243595361121
   lng: -68.25630009773117
-  link: "photography/album/?folder=images/us_travel/acadia"
-  image: "images/us_travel/acadia/DSC_0630.JPEG"
+  link: "/photography/album/?folder=/images/us_travel/acadia"
+  image: "/images/us_travel/acadia/DSC_0630.JPEG"
 
 - title: "Yosemite National Park"
   lat:  37.87650368415085
   lng: -119.47352932280877
-  link: "photography/album/?folder=images/us_travel/yosemite"
-  image: "images/us_travel/yosemite/83B113EC-7D2C-4281-B1EA-534CF4F78665_1_105_c.jpeg"
+  link: "/photography/album/?folder=/images/us_travel/yosemite"
+  image: "/images/us_travel/yosemite/83B113EC-7D2C-4281-B1EA-534CF4F78665_1_105_c.jpeg"
 
 - title: "Arches National Park"
   lat:    38.741360406474804
   lng: -109.54788612614294
-  link: "photography/album/?folder=images/us_travel/moab"
-  image: "images/us_travel/moab/IMG_8039.JPEG"
+  link: "/photography/album/?folder=/images/us_travel/moab"
+  image: "/images/us_travel/moab/IMG_8039.JPEG"
 
 - title: "Sequoia National Park"
   lat: 36.7509028599338
   lng: -117.55500980493426
-  link: "photography/album/?folder=images/us_travel/sequoia"
-  image: "images/us_travel/sequoia/0D5BACE5-D0C4-4A48-A1E5-008EA0B31C57.jpeg"
+  link: "/photography/album/?folder=/images/us_travel/sequoia"
+  image: "/images/us_travel/sequoia/0D5BACE5-D0C4-4A48-A1E5-008EA0B31C57.jpeg"
 
 - title: "Grand Canyon National Park"
   lat: 36.32330265162818
   lng: -112.27750685444694
-  link: "photography/album/?folder=images/us_travel/grandcanyon"
-  image: "images/us_travel/grandcanyon/IMG_8115.JPEG"
+  link: "/photography/album/?folder=/images/us_travel/grandcanyon"
+  image: "/images/us_travel/grandcanyon/IMG_8115.JPEG"
+
 
 - title: "Rocky Mountain National Park"
   lat: 40.358987120559256
   lng: -105.61400408444865
-  link: "photography/album/?folder=images/us_travel/rockymountain"
-  image: "images/us_travel/rockymountain/IMG_8128.JPEG"
+  link: "/photography/album/?folder=/images/us_travel/rockymountain"
+  image: "/images/us_travel/rockymountain/IMG_8128.JPEG"
 
 - title: "Death Valley National Park"
   lat: 36.59821219846839
   lng: -116.93881053111582
-  link: "photography/album/?folder=images/us_travel/deathvalley"
-  image: "images/us_travel/deathvalley/8C9AB977-C79B-4C05-B618-56BF5CD2CD7F_1_102_o.jpeg"
+  link: "/photography/album/?folder=/images/us_travel/deathvalley"
+  image: "/images/us_travel/deathvalley/8C9AB977-C79B-4C05-B618-56BF5CD2CD7F_1_102_o.jpeg"
 
 - title: "Joshua Tree National Park"
   lat: 33.899542883797366
   lng: -115.84012493335774
-  link: "photography/album/?folder=images/us_travel/joshuatree"
-  image: "images/us_travel/joshuatree/A9A5DE70-2FBA-4DFB-B683-E97BB1586905_1_105_c.jpeg"
+  link: "/photography/album/?folder=/images/us_travel/joshuatree"
+  image: "/images/us_travel/joshuatree/A9A5DE70-2FBA-4DFB-B683-E97BB1586905_1_105_c.jpeg"
+
+
