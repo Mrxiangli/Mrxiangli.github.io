@@ -8,7 +8,7 @@ title: On the road
 
 <h3>Locations</h3>
 
-<div id="photo-map" style="height: 400px; width: 100%; z-index: 1; border-radius: 8px;"></div>
+<div id="photo-map" style="height: 600px; width: 100%; z-index: 1; border-radius: 8px;"></div>
 
 <script>
   var map = L.map('photo-map').setView([37.8, -96], 4);
