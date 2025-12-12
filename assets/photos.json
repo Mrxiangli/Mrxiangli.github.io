@@ -7,7 +7,7 @@ permalink: /assets/photos.json
   {% for file in site.static_files %}
     {% if file.path contains 'images' %}
       {% assign ext = file.extname | downcase %}
-      {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".gif" %}
+      {% if ext == ".jpg" or ext == ".jpeg" or ext == ".png" or ext == ".gif" or ext == ".JPEG"%}
         {% assign image_files = image_files | push: file %}
       {% endif %}
     {% endif %}
