@@ -60,4 +60,17 @@
   link: "/photography/album/?folder=/images/us_travel/joshuatree"
   image: "/images/us_travel/joshuatree/A9A5DE70-2FBA-4DFB-B683-E97BB1586905_1_105_c.jpeg"
 
+- title: "Key West"
+  lat: 24.555062572975782
+  lng: -81.78107792805757
+  link: "/photography/album/?folder=/images/us_travel/keywest"
+  image: "/images/us_travel/keywest/D900B6D9-C401-4604-9172-3CC8C0F03E3C_1_105_c.jpeg"
+
+- title: "Pictured Rock National Lakeshore"
+  lat: 46.56897471994597
+  lng: -86.31795095685393
+  link: "/photography/album/?folder=/images/us_travel/picturedrock"
+  image: "/images/us_travel/picturedrock/81E921B2-7069-4E4D-84F3-37078687A813_1_105_c.jpeg"
+
+
 
