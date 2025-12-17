@@ -72,5 +72,14 @@
   link: "/photography/album/?folder=/images/us_travel/picturedrock"
   image: "/images/us_travel/picturedrock/81E921B2-7069-4E4D-84F3-37078687A813_1_105_c.jpeg"
 
+- title: "Niagara Falls"
+  lat: 43.09065231996332
+  lng: -79.08844368119456
+  link: "/photography/album/?folder=/images/us_travel/niagara"
+  image: "/images/us_travel/niagara/A855537A-DE40-48D6-8847-82AAE79609B6_1_105_c.jpeg"
 
-
+- title: "Chicago"
+  lat: 41.88166596925257
+  lng: -87.62957923160995
+  link: "/photography/album/?folder=/images/us_travel/chicago"
+  image: "/images/us_travel/chicago/11D4D2D1-0732-4D1D-964E-5A487ECA49C0_1_105_c.jpeg"
