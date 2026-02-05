@@ -22,6 +22,10 @@ layout: single
 
 <ul style="font-size: 0.8em;">
   <li>
+  <strong>ML Algorithm Intern</strong>, <em>Futurewei Technologies</em>, Sept 2025 - Dec 2025  
+  </li>
+
+  <li>
   <strong>Machine Learning Research Intern</strong>, <em>Houston Methodist Research Institute</em>, May 2023 - Aug 2023  
   </li>
 
