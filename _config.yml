@@ -82,8 +82,8 @@ analytics:
 author:
   name             : "Xiang Li (李想)"
   avatar           : "myimage.jpeg"
-  bio              : "Ph.D Student"
-  location         : "West Lafayette, IN, USA"
+  bio              : "Ph.D Student @ Purdue"
+  location         :
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=BEd64-AAAAAJ&hl=en"

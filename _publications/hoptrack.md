@@ -2,7 +2,7 @@
 title: "HopTrack: A Real-time Multi-Object Tracking System for Embedded Devices"
 collection: publications
 date: 2024-11-1   
-venue: 'Under review for IEEE Journal on Selected Areas in Communications'
+venue: 'arXiv Preprint'
 paperurl: 'https://arxiv.org/abs/2411.00608'
 codeurl: 'https://github.com/Mrxiangli/HopTrack'  # Add your code URL here
 authors: Xiang Li, Cheng Chen, Yuan-Yao Lou, Mustafa Abdallah, Kwang Taik Kim, Saurabh Bagchi

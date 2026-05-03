@@ -1,17 +1,4 @@
-# main links links
+# main links
 main:
-  
-  - title: "Research"
-    url: /research/
-  
-  - title: "Publication"
-    url: /publications/
-
-  - title: "CV/Resume"
-    url: /files/Xiang_Li_CV.pdf
-  
-  # - title: "Blog"
-  #   url: /blog/
-    
-  - title: "Albums"
+  - title: "Photography & Life"
     url: /photography/

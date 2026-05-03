@@ -1,0 +1,239 @@
+/* ==========================================================================
+   Custom Modern Academic Styles
+   ========================================================================== */
+
+/* Typography Overrides */
+html {
+  font-size: 15px;
+  /* Compact base size */
+}
+
+body {
+  font-size: 1rem;
+  line-height: 1.5;
+  font-variant-ligatures: common-ligatures;
+  text-rendering: optimizeLegibility;
+  color: $text-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: $primary-color;
+  letter-spacing: -0.01em;
+  margin-top: 1.2em;
+  margin-bottom: 0.4em;
+}
+
+.archive__item {
+  margin-bottom: 2em;
+  /* Significant space between papers */
+}
+
+.archive__item-title {
+  font-size: 1rem !important;
+  color: $text-color !important;
+  font-weight: 600;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  line-height: 1.1 !important;
+
+  a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: #eee;
+
+    &:hover {
+      text-decoration-color: $primary-color;
+    }
+  }
+}
+
+.archive__item-venue {
+  font-size: 0.8rem !important;
+  color: #888;
+  margin-top: -3px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.1 !important;
+}
+
+.cv-link {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 12px 0 15px !important;
+  padding: 8px 0 !important;
+  font-size: 0.85rem !important;
+  font-weight: 500;
+  color: #444 !important;
+  text-decoration: none !important;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: #fcfcfc;
+    color: #000 !important;
+    border-color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  i {
+    margin-right: 8px;
+    font-size: 1.1em;
+  }
+}
+
+.featured-publications .archive__item {
+  margin-left: 15px;
+  margin-bottom: 25px;
+}
+
+.archive__item-title {
+  font-weight: 500;
+  margin-bottom: -5px !important;
+  margin-top: 0 !important;
+  line-height: 1.2 !important;
+}
+
+.archive__item-venue {
+  margin-bottom: 2px !important;
+  margin-top: 0 !important;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.archive__item-authors {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  font-size: 0.75rem !important;
+  color: #333 !important;
+  line-height: 1.1 !important;
+
+  .author-highlight {
+    color: #000 !important;
+    font-weight: 500;
+  }
+}
+
+/* News Section Styles */
+.news-item {
+  display: flex;
+  margin-bottom: 0.8em;
+  padding-bottom: 0.8em;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.news-date {
+  min-width: 90px;
+  font-weight: 600;
+  color: #888;
+  font-size: 0.85em;
+}
+
+.news-content {
+  flex: 1;
+  font-size: 0.9em;
+
+  a {
+    font-weight: 400;
+    text-decoration: underline;
+  }
+}
+
+/* Professional Experience Styles */
+.experience-container {
+  margin-top: 1em;
+}
+
+.experience-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-left: 15px;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #f8f8f8;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.exp-info {
+  flex: 1;
+  padding-right: 20px;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.exp-role {
+  font-weight: 500;
+  color: #000;
+}
+
+.exp-company {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.exp-date {
+  font-size: 0.85rem;
+  color: #999;
+  white-space: nowrap;
+}
+
+/* Sidebar Profile Tweaks */
+.author__name {
+  font-family: $header-font-family;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5em !important;
+}
+
+.author__bio {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.4;
+  margin-bottom: 1em !important;
+}
+
+.btn--cv {
+  display: block;
+  width: 100%;
+  margin: 15px 0 20px 0;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  color: #333;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none !important;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #f8f8f8;
+    border-color: #bbb;
+    color: #000;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+  }
+
+  i {
+    margin-right: 8px;
+    color: #cc0000; /* PDF red icon */
+  }
+}

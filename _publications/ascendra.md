@@ -2,7 +2,7 @@
 title: "Ascendra: Dynamic Request Prioritization for Efficient LLM Serving"
 collection: publications
 date: 2025-4-25   
-venue: arXiv
+venue: 'arXiv Preprint'
 paperurl: 'https://arxiv.org/abs/2504.20828'
 codeurl: ''
 authors: Azam Ikram*, Xiang Li*, Sameh Elnikety, Saurabh Bagchi
