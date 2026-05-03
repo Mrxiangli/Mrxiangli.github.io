@@ -15,31 +15,30 @@ title: Photo Album
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Move the back button to the header area dynamically
-  function moveBackButton() {
+(function() {
+  console.log("Gallery Script Initializing...");
+
+  function initGallery() {
+    // Move the back button
     const header = document.querySelector('.page__inner-wrap header');
-    if (header) {
+    if (header && !header.querySelector('.header-btn')) {
       header.classList.add('album-dynamic-header');
       const btn = document.createElement('a');
-      btn.href = '/photography/';
+      btn.href = '{{ "/photography/" | relative_url }}';
       btn.className = 'back-btn header-btn';
       btn.innerHTML = '← Back to Gallery';
       header.appendChild(btn);
     }
-  }
-  
-  moveBackButton();
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const targetFolder = urlParams.get('folder');
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetFolder = urlParams.get('folder');
+    if (!targetFolder) return;
 
-  const rawData = {{ site.data.map_locations | jsonify }};
-  const mapLocations = rawData || [];
+    const rawData = {{ site.data.map_locations | jsonify }};
+    const mapLocations = rawData || [];
 
-  try {
-    let pageTitle = "Untitled Album";
-    if (targetFolder) {
+    try {
+      let pageTitle = "Untitled Album";
       const cleanTarget = targetFolder.replace(/^\//, '');
       const match = mapLocations.find(loc => loc.link && loc.link.replace(/^\//, '').includes(cleanTarget));
       if (match) pageTitle = match.title;
@@ -49,55 +48,57 @@ document.addEventListener('DOMContentLoaded', function() {
         const folderName = parts[parts.length - 1] || parts[parts.length - 2]; 
         if (folderName) pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       }
-    }
-    // Update the main theme title instead of a separate element
-    const titleEl = document.querySelector('.page__title');
-    if (titleEl) titleEl.innerText = pageTitle;
-    document.title = pageTitle + " - Photography";
-  } catch (err) { console.error(err); }
+      const titleEl = document.querySelector('.page__title');
+      if (titleEl) titleEl.innerText = pageTitle;
+      document.title = pageTitle + " - Photography";
+    } catch (err) { console.warn("Title update failed", err); }
 
-  const fetchUrl = '/assets/photos.json?v=' + new Date().getTime();
-  fetch(fetchUrl)
-    .then(response => {
-      if (!response.ok) throw new Error("Could not find photos.json");
-      return response.json();
-    })
-    .then(data => {
-      if (!Array.isArray(data)) throw new Error("Invalid data format");
-      const container = document.getElementById('gallery-container');
-      const albumImages = data.filter(img => img.path && targetFolder && img.path.toLowerCase().replace(/^\//, '').includes(targetFolder.toLowerCase().replace(/^\//, '')));
+    const fetchUrl = '{{ "/assets/photos.json" | relative_url }}?v=' + new Date().getTime();
+    fetch(fetchUrl)
+      .then(response => {
+        if (!response.ok) throw new Error("Photos data not found at " + fetchUrl);
+        return response.json();
+      })
+      .then(data => {
+        const container = document.getElementById('gallery-container');
+        if (!container) return;
+        
+        const cleanParam = targetFolder.toLowerCase().replace(/^\//, '');
+        const albumImages = data.filter(img => img.path && img.path.toLowerCase().replace(/^\//, '').includes(cleanParam));
 
-      if (albumImages.length === 0) {
-        container.innerHTML = "<p>No photos found.</p>";
-        return;
-      }
+        if (albumImages.length === 0) {
+          container.innerHTML = "<p>No photos found in folder: " + targetFolder + "</p>";
+          return;
+        }
 
-      albumImages.forEach(img => {
-        const photoDiv = document.createElement('div');
-        photoDiv.className = 'photo';
-        const link = document.createElement('a');
-        const correctPath = img.path.startsWith('/') ? img.path : '/' + img.path;
-        link.href = correctPath;
-        link.className = 'gallery-link';
-        const imgTag = document.createElement('img');
-        imgTag.src = correctPath;
-        imgTag.loading = "lazy";
-        link.appendChild(imgTag);
-        photoDiv.appendChild(link);
-        container.appendChild(photoDiv);
+        albumImages.forEach(img => {
+          const photoDiv = document.createElement('div');
+          photoDiv.className = 'photo';
+          const link = document.createElement('a');
+          const correctPath = img.path.startsWith('/') ? '{{ "" | relative_url }}' + img.path : '{{ "/" | relative_url }}' + img.path;
+          link.href = correctPath;
+          link.className = 'gallery-link';
+          const imgTag = document.createElement('img');
+          imgTag.src = correctPath;
+          imgTag.loading = "lazy";
+          link.appendChild(imgTag);
+          photoDiv.appendChild(link);
+          container.appendChild(photoDiv);
+        });
+
+        if (typeof LuminousGallery !== 'undefined') {
+          new LuminousGallery(document.querySelectorAll(".gallery-link"));
+        }
+      })
+      .catch(err => {
+        console.error('Gallery Load Error:', err);
+        const container = document.getElementById('gallery-container');
+        if (container) container.innerHTML = `<p>Error: ${err.message}</p>`;
       });
+  }
 
-      // Initialize Lightbox with safety check
-      if (typeof LuminousGallery !== 'undefined') {
-        new LuminousGallery(document.querySelectorAll(".gallery-link"));
-      }
-    })
-    .catch(err => {
-      console.error('Gallery Load Error:', err);
-      const container = document.getElementById('gallery-container');
-      if (container && container.children.length === 0) {
-        container.innerHTML = `<p style="color: #666; font-size: 0.9rem;">Error loading gallery: ${err.message}</p>`;
-      }
-    });
-});
+  // Run immediately and also on load to be safe
+  initGallery();
+  window.addEventListener('load', initGallery);
+})();
 </script>
