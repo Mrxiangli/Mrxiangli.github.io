@@ -15,6 +15,7 @@ title: Photo Album
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', function() {
   // Move the back button to the header area dynamically
   function moveBackButton() {
     const header = document.querySelector('.page__inner-wrap header');
@@ -29,6 +30,7 @@ title: Photo Album
   }
   
   moveBackButton();
+
   const urlParams = new URLSearchParams(window.location.search);
   const targetFolder = urlParams.get('folder');
 
@@ -88,16 +90,14 @@ title: Photo Album
       // Initialize Lightbox with safety check
       if (typeof LuminousGallery !== 'undefined') {
         new LuminousGallery(document.querySelectorAll(".gallery-link"));
-      } else {
-        console.warn("LuminousGallery not found, lightbox disabled.");
       }
     })
     .catch(err => {
       console.error('Gallery Load Error:', err);
-      // Only show error if we didn't manage to load any images
       const container = document.getElementById('gallery-container');
       if (container && container.children.length === 0) {
         container.innerHTML = `<p style="color: #666; font-size: 0.9rem;">Error loading gallery: ${err.message}</p>`;
       }
     });
+});
 </script>
