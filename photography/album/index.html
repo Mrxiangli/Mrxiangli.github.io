@@ -1,112 +1,103 @@
 ---
-layout: default
+layout: single
+author_profile: true
+classes: 
+  - wide
+  - photography-layout
 title: Photo Album
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/luminous-lightbox/2.4.0/luminous-basic.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/luminous-lightbox/2.4.0/Luminous.min.js"></script>
+
 <div class="album-container">
-  
-  <div class="album-header">
-    <h1 id="album-title" class="album-title">Loading...</h1>
-    <a href="/photography/" class="back-btn">← Back to Map</a>
-  </div>
-
-  <div id="gallery-container" class="photo-gallery">
-    </div>
-
+  <div id="gallery-container" class="photo-gallery"></div>
 </div>
 
 <script>
-  console.log("Script initializing...");
-
-
+  // Move the back button to the header area dynamically
+  function moveBackButton() {
+    const header = document.querySelector('.page__inner-wrap header');
+    if (header) {
+      header.classList.add('album-dynamic-header');
+      const btn = document.createElement('a');
+      btn.href = '/photography/';
+      btn.className = 'back-btn header-btn';
+      btn.innerHTML = '← Back to Gallery';
+      header.appendChild(btn);
+    }
+  }
+  
+  moveBackButton();
   const urlParams = new URLSearchParams(window.location.search);
   const targetFolder = urlParams.get('folder');
-  console.log("Target Folder:", targetFolder);
 
   const rawData = {{ site.data.map_locations | jsonify }};
   const mapLocations = rawData || [];
-  console.log("Map Locations Loaded:", mapLocations.length);
 
   try {
     let pageTitle = "Untitled Album";
-
     if (targetFolder) {
       const cleanTarget = targetFolder.replace(/^\//, '');
+      const match = mapLocations.find(loc => loc.link && loc.link.replace(/^\//, '').includes(cleanTarget));
+      if (match) pageTitle = match.title;
       
-
-      if (mapLocations.length > 0) {
-        const match = mapLocations.find(loc => {
-            return loc.link && loc.link.replace(/^\//, '').includes(cleanTarget);
-        });
-        if (match) pageTitle = match.title;
-      }
-      
-
       if (pageTitle === "Untitled Album") {
         const parts = cleanTarget.split('/');
         const folderName = parts[parts.length - 1] || parts[parts.length - 2]; 
-        if (folderName) {
-           pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        }
+        if (folderName) pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
       }
     }
-    
-    document.getElementById('album-title').innerText = pageTitle;
+    // Update the main theme title instead of a separate element
+    const titleEl = document.querySelector('.page__title');
+    if (titleEl) titleEl.innerText = pageTitle;
     document.title = pageTitle + " - Photography";
-    
-  } catch (err) {
-    console.error("Non-fatal error setting title:", err);
-  }
+  } catch (err) { console.error(err); }
 
-  const fetchUrl = '../../assets/photos.json?v=' + new Date().getTime();
-  console.log("Attempting fetch from:", fetchUrl);
-
+  const fetchUrl = '/assets/photos.json?v=' + new Date().getTime();
   fetch(fetchUrl)
     .then(response => {
-      console.log("Fetch response status:", response.status);
-      if (!response.ok) throw new Error("HTTP " + response.status + " - File not found");
+      if (!response.ok) throw new Error("Could not find photos.json");
       return response.json();
     })
     .then(data => {
-      console.log("Photos JSON loaded. Items:", data.length);
+      if (!Array.isArray(data)) throw new Error("Invalid data format");
       const container = document.getElementById('gallery-container');
-      
-      const albumImages = data.filter(img => {
-        if (!img.path || !targetFolder) return false;
-        
-        const p1 = img.path.toLowerCase().replace(/^\//, '');
-        const p2 = targetFolder.toLowerCase().replace(/^\//, '');
-        
-        return p1.includes(p2);
-      });
-
-      console.log("Filtered images count:", albumImages.length);
+      const albumImages = data.filter(img => img.path && targetFolder && img.path.toLowerCase().replace(/^\//, '').includes(targetFolder.toLowerCase().replace(/^\//, '')));
 
       if (albumImages.length === 0) {
-        container.innerHTML = "<p>No photos found. (Checked path: " + targetFolder + ")</p>";
+        container.innerHTML = "<p>No photos found.</p>";
         return;
       }
 
       albumImages.forEach(img => {
         const photoDiv = document.createElement('div');
         photoDiv.className = 'photo';
-        
         const link = document.createElement('a');
-
         const correctPath = img.path.startsWith('/') ? img.path : '/' + img.path;
-        link.href = correctPath; 
-        
+        link.href = correctPath;
+        link.className = 'gallery-link';
         const imgTag = document.createElement('img');
         imgTag.src = correctPath;
         imgTag.loading = "lazy";
-        
         link.appendChild(imgTag);
         photoDiv.appendChild(link);
         container.appendChild(photoDiv);
       });
+
+      // Initialize Lightbox with safety check
+      if (typeof LuminousGallery !== 'undefined') {
+        new LuminousGallery(document.querySelectorAll(".gallery-link"));
+      } else {
+        console.warn("LuminousGallery not found, lightbox disabled.");
+      }
     })
     .catch(err => {
-      console.error('CRITICAL FETCH ERROR:', err);
-      document.getElementById('gallery-container').innerHTML = "<p>Error loading gallery: " + err.message + "</p>";
+      console.error('Gallery Load Error:', err);
+      // Only show error if we didn't manage to load any images
+      const container = document.getElementById('gallery-container');
+      if (container && container.children.length === 0) {
+        container.innerHTML = `<p style="color: #666; font-size: 0.9rem;">Error loading gallery: ${err.message}</p>`;
+      }
     });
 </script>
