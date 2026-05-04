@@ -2,7 +2,7 @@
 title: "Deep-Reproducer: From Paper Understanding to Code Generation"
 collection: publications
 date: 2025-9-25   
-venue: 'Neurips@DL4C'
+venue: 'Neurips@DL4C, San Diego, CA, USA'
 paperurl: 'https://openreview.net/forum?id=zw2DpSxnXn'
 codeurl: ''
 authors: Pengcheng Chen, Ning Yan, Zihan Zhao, Yixiao Lin, Huaibo Chen, Yue Hu, Qinbo Bai, Xiang Li, Masood S. Mortazavi
