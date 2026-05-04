@@ -1,5 +1,5 @@
 ---
-title: "Embodied Task Planning via Graph-Informed Action Generation with Large Lanaguage Model"
+title: "Embodied Task Planning via Graph-Informed Action Generation with Large Language Model"
 collection: publications
 date: 2026-1-26   
 venue: arXiv
