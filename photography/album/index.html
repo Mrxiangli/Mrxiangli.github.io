@@ -25,7 +25,7 @@ function initGallery() {
   const container = document.getElementById('gallery-container');
   if (!container) return;
 
-  // Header and Back Button
+  /* Header and Back Button */
   const header = document.querySelector('.page__inner-wrap header');
   if (header && !header.querySelector('.header-btn')) {
     header.classList.add('album-dynamic-header');
@@ -43,7 +43,7 @@ function initGallery() {
     return;
   }
 
-  // Load Album Metadata
+  /* Load Album Metadata */
   let mapLocations = [];
   try {
     const dataText = document.getElementById('album-data').textContent;
@@ -52,7 +52,7 @@ function initGallery() {
     console.error("Data parse error", e); 
   }
 
-  // Update Page Title
+  /* Update Page Title */
   try {
     let pageTitle = "Untitled Album";
     const cleanTarget = targetFolder.replace(/^\//, '');
@@ -71,7 +71,7 @@ function initGallery() {
     console.warn("Title update failed", err); 
   }
 
-  // Fetch Photos
+  /* Fetch Photos */
   const fetchUrl = '{{ "/assets/photos.json" | relative_url }}?v=' + new Date().getTime();
   fetch(fetchUrl)
     .then(response => {
@@ -113,7 +113,7 @@ function initGallery() {
     });
 }
 
-// Simple initialization
+/* Simple initialization */
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initGallery);
 } else {
