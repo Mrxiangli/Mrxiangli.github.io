@@ -1,9 +1,9 @@
 ---
 layout: single
 author_profile: true
-classes: 
-  - wide
-  - photography-layout
+classes:
+- wide
+- photography-layout
 title: Photo Album
 ---
 
@@ -14,109 +14,94 @@ title: Photo Album
   <div id="gallery-container" class="photo-gallery"></div>
 </div>
 
-<script id="album-data" type="application/json">
-  {{ site.data.map_locations | jsonify }}
-</script>
-
 <script>
-console.log("Gallery Script Starting...");
+  console.log("Gallery Script Starting...");
 
-function initGallery() {
-  const container = document.getElementById('gallery-container');
-  if (!container) return;
+  function initGallery() {
+    const container = document.getElementById('gallery-container');
+    if (!container) return;
 
-  /* Header and Back Button */
-  const header = document.querySelector('.page__inner-wrap header');
-  if (header && !header.querySelector('.header-btn')) {
-    header.classList.add('album-dynamic-header');
-    const btn = document.createElement('a');
-    btn.href = '{{ "/photography/" | relative_url }}';
-    btn.className = 'back-btn header-btn';
-    btn.innerHTML = '← Back to Gallery';
-    header.appendChild(btn);
-  }
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const targetFolder = urlParams.get('folder');
-  if (!targetFolder) {
-    container.innerHTML = "<p>No folder specified.</p>";
-    return;
-  }
-
-  /* Load Album Metadata */
-  let mapLocations = [];
-  try {
-    const dataText = document.getElementById('album-data').textContent;
-    mapLocations = JSON.parse(dataText) || [];
-  } catch (e) { 
-    console.error("Data parse error", e); 
-  }
-
-  /* Update Page Title */
-  try {
-    let pageTitle = "Untitled Album";
-    const cleanTarget = targetFolder.replace(/^\//, '');
-    const match = mapLocations.find(loc => loc.link && loc.link.replace(/^\//, '').includes(cleanTarget));
-    if (match) pageTitle = match.title;
-    
-    if (pageTitle === "Untitled Album") {
-      const parts = cleanTarget.split('/');
-      const folderName = parts[parts.length - 1] || parts[parts.length - 2]; 
-      if (folderName) pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    /* Header and Back Button */
+    const header = document.querySelector('.page__inner-wrap header');
+    if (header && !header.querySelector('.header-btn')) {
+      header.classList.add('album-dynamic-header');
+      const btn = document.createElement('a');
+      btn.href = '{{ "/photography/" | relative_url }}';
+      btn.className = 'back-btn header-btn';
+      btn.innerHTML = '← Back to Gallery';
+      header.appendChild(btn);
     }
-    const titleEl = document.querySelector('.page__title');
-    if (titleEl) titleEl.innerText = pageTitle;
-    document.title = pageTitle + " - Photography";
-  } catch (err) { 
-    console.warn("Title update failed", err); 
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetFolder = urlParams.get('folder');
+    if (!targetFolder) {
+      container.innerHTML = "<p>No folder specified.</p>";
+      return;
+    }
+
+    /* Update Page Title */
+    try {
+      let pageTitle = "Untitled Album";
+      const cleanTarget = targetFolder.replace(/^\//, '');
+
+      if (pageTitle === "Untitled Album") {
+        const parts = cleanTarget.split('/');
+        const folderName = parts[parts.length - 1] || parts[parts.length - 2];
+        if (folderName) pageTitle = folderName.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+      }
+      const titleEl = document.querySelector('.page__title');
+      if (titleEl) titleEl.innerText = pageTitle;
+      document.title = pageTitle + " - Photography";
+    } catch (err) {
+      console.warn("Title update failed", err);
+    }
+
+    /* Fetch Photos */
+    const fetchUrl = '{{ "/assets/photos.json" | relative_url }}?v=' + new Date().getTime();
+    fetch(fetchUrl)
+      .then(response => {
+        if (!response.ok) throw new Error("Photos not found");
+        return response.json();
+      })
+      .then(data => {
+        const cleanParam = targetFolder.toLowerCase().replace(/^\//, '');
+        const albumImages = data.filter(img => img.path && img.path.toLowerCase().replace(/^\//, '').includes(cleanParam));
+
+        if (albumImages.length === 0) {
+          container.innerHTML = "<p>No photos found in folder: " + targetFolder + "</p>";
+          return;
+        }
+
+        container.innerHTML = '';
+        albumImages.forEach(img => {
+          const photoDiv = document.createElement('div');
+          photoDiv.className = 'photo';
+          const link = document.createElement('a');
+          const correctPath = img.path.startsWith('/') ? '{{ "" | relative_url }}' + img.path : '{{ "/" | relative_url }}' + img.path;
+          link.href = correctPath;
+          link.className = 'gallery-link';
+          const imgTag = document.createElement('img');
+          imgTag.src = correctPath;
+          imgTag.loading = "lazy";
+          link.appendChild(imgTag);
+          photoDiv.appendChild(link);
+          container.appendChild(photoDiv);
+        });
+
+        if (typeof LuminousGallery !== 'undefined') {
+          new LuminousGallery(document.querySelectorAll(".gallery-link"));
+        }
+      })
+      .catch(err => {
+        console.error('Gallery Load Error:', err);
+        container.innerHTML = `<p>Error loading photos: ${err.message}</p>`;
+      });
   }
 
-  /* Fetch Photos */
-  const fetchUrl = '{{ "/assets/photos.json" | relative_url }}?v=' + new Date().getTime();
-  fetch(fetchUrl)
-    .then(response => {
-      if (!response.ok) throw new Error("Photos not found");
-      return response.json();
-    })
-    .then(data => {
-      const cleanParam = targetFolder.toLowerCase().replace(/^\//, '');
-      const albumImages = data.filter(img => img.path && img.path.toLowerCase().replace(/^\//, '').includes(cleanParam));
-
-      if (albumImages.length === 0) {
-        container.innerHTML = "<p>No photos found in folder: " + targetFolder + "</p>";
-        return;
-      }
-
-      container.innerHTML = '';
-      albumImages.forEach(img => {
-        const photoDiv = document.createElement('div');
-        photoDiv.className = 'photo';
-        const link = document.createElement('a');
-        const correctPath = img.path.startsWith('/') ? '{{ "" | relative_url }}' + img.path : '{{ "/" | relative_url }}' + img.path;
-        link.href = correctPath;
-        link.className = 'gallery-link';
-        const imgTag = document.createElement('img');
-        imgTag.src = correctPath;
-        imgTag.loading = "lazy";
-        link.appendChild(imgTag);
-        photoDiv.appendChild(link);
-        container.appendChild(photoDiv);
-      });
-
-      if (typeof LuminousGallery !== 'undefined') {
-        new LuminousGallery(document.querySelectorAll(".gallery-link"));
-      }
-    })
-    .catch(err => {
-      console.error('Gallery Load Error:', err);
-      container.innerHTML = `<p>Error loading photos: ${err.message}</p>`;
-    });
-}
-
-/* Simple initialization */
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initGallery);
-} else {
-  initGallery();
-}
+  /* Simple initialization */
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+  } else {
+    initGallery();
+  }
 </script>
