@@ -14,11 +14,19 @@ title: Photo Album
   <div id="gallery-container" class="photo-gallery"></div>
 </div>
 
+<!-- Hidden data container to prevent JS syntax errors -->
+<script id="album-data" type="application/json">
+  {{ site.data.map_locations | jsonify }}
+</script>
+
 <script>
 (function() {
   console.log("Gallery Script Initializing...");
 
   function initGallery() {
+    const container = document.getElementById('gallery-container');
+    if (!container) return;
+
     // Move the back button
     const header = document.querySelector('.page__inner-wrap header');
     if (header && !header.querySelector('.header-btn')) {
@@ -32,10 +40,17 @@ title: Photo Album
 
     const urlParams = new URLSearchParams(window.location.search);
     const targetFolder = urlParams.get('folder');
-    if (!targetFolder) return;
+    if (!targetFolder) {
+      container.innerHTML = "<p>No folder specified.</p>";
+      return;
+    }
 
-    const rawData = {{ site.data.map_locations | jsonify }};
-    const mapLocations = rawData || [];
+    // Load data from the hidden container
+    let mapLocations = [];
+    try {
+      const dataText = document.getElementById('album-data').textContent;
+      mapLocations = JSON.parse(dataText) || [];
+    } catch (e) { console.error("Data parse error", e); }
 
     try {
       let pageTitle = "Untitled Album";
@@ -60,9 +75,6 @@ title: Photo Album
         return response.json();
       })
       .then(data => {
-        const container = document.getElementById('gallery-container');
-        if (!container) return;
-        
         const cleanParam = targetFolder.toLowerCase().replace(/^\//, '');
         const albumImages = data.filter(img => img.path && img.path.toLowerCase().replace(/^\//, '').includes(cleanParam));
 
@@ -71,6 +83,7 @@ title: Photo Album
           return;
         }
 
+        container.innerHTML = ''; // Clear loading state
         albumImages.forEach(img => {
           const photoDiv = document.createElement('div');
           photoDiv.className = 'photo';
@@ -92,13 +105,15 @@ title: Photo Album
       })
       .catch(err => {
         console.error('Gallery Load Error:', err);
-        const container = document.getElementById('gallery-container');
-        if (container) container.innerHTML = `<p>Error: ${err.message}</p>`;
+        container.innerHTML = `<p>Error loading photos: ${err.message}</p>`;
       });
   }
 
-  // Run immediately and also on load to be safe
-  initGallery();
-  window.addEventListener('load', initGallery);
+  // Ensure initialization happens
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+  } else {
+    initGallery();
+  }
 })();
 </script>
