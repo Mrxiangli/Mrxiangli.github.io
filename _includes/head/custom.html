@@ -23,3 +23,24 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
 <!-- end custom head snippets -->
+
+<script>
+  // Language Toggle Logic
+  (function() {
+    const savedLang = localStorage.getItem('site-lang') || 'en';
+    document.documentElement.classList.add('lang-' + savedLang);
+    
+    window.toggleLanguage = function() {
+      const html = document.documentElement;
+      if (html.classList.contains('lang-en')) {
+        html.classList.remove('lang-en');
+        html.classList.add('lang-zh');
+        localStorage.setItem('site-lang', 'zh');
+      } else {
+        html.classList.remove('lang-zh');
+        html.classList.add('lang-en');
+        localStorage.setItem('site-lang', 'en');
+      }
+    };
+  })();
+</script>

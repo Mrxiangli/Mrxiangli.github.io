@@ -15,6 +15,12 @@
             {% endif %}
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
+          <li class="masthead__menu-item lang-toggle">
+            <a href="javascript:void(0);" onclick="toggleLanguage()">
+              <span class="en-label">EN</span>
+              <span class="zh-label">中</span>
+            </a>
+          </li>
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>

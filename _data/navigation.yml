@@ -1,4 +1,4 @@
 # main links
 main:
-  - title: "Photography & Life"
+  - title: '<span class="lang-en">Photography & Life</span><span class="lang-zh">摄影与生活</span>'
     url: /photography/

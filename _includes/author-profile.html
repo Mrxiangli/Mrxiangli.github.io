@@ -17,9 +17,16 @@
 
   <div class="author__content">
     <h3 class="author__name">{{ author.name }}</h3>
-    {% if author.bio %}<p class="author__bio">{{ author.bio }}</p>{% endif %}
+    {% if author.bio %}
+      <p class="author__bio">
+        <span class="lang-en">{{ author.bio }}</span>
+        <span class="lang-zh">普渡大学在读博士生</span>
+      </p>
+    {% endif %}
     <a href="{{ base_path }}/files/Xiang_Li_CV.pdf" class="btn--cv">
-      <i class="fas fa-file-pdf" aria-hidden="true"></i> Download CV
+      <i class="fas fa-file-pdf" aria-hidden="true"></i> 
+      <span class="lang-en">Download CV</span>
+      <span class="lang-zh">下载简历</span>
     </a>
   </div>
 
@@ -139,16 +146,26 @@
       {% endif %}
 
       <div class="author__content" style="margin-top: 20px; border-top: 1px solid #f2f3f3; padding-top: 15px;">
-        <h4
-          style="margin-bottom: 10px; font-size: 0.85rem; color: #333; text-transform: uppercase; letter-spacing: 1px;">
-          Research Interests</h4>
+        <h4 style="margin-bottom: 10px; font-size: 0.85rem; color: #333; text-transform: uppercase; letter-spacing: 1px;">
+          <span class="lang-en">Research Interests</span>
+          <span class="lang-zh">研究方向</span>
+        </h4>
         <ul style="list-style-type: none; margin: 0; padding: 0; font-size: 0.85rem; color: #666;">
-          <li style="margin-bottom: 5px;"><i class="fas fa-fw fa-brain" style="margin-right: 5px;"></i> LLM Inference
-            Optimization</li>
-          <li style="margin-bottom: 5px;"><i class="fas fa-fw fa-memory" style="margin-right: 5px;"></i> LLM Agent
-            Memory</li>
-          <li style="margin-bottom: 5px;"><i class="fas fa-fw fa-network-wired" style="margin-right: 5px;"></i>
-            Distributed Systems</li>
+          <li style="margin-bottom: 5px;">
+            <i class="fas fa-fw fa-brain" style="margin-right: 5px;"></i> 
+            <span class="lang-en">LLM Inference Optimization</span>
+            <span class="lang-zh">大模型推理优化</span>
+          </li>
+          <li style="margin-bottom: 5px;">
+            <i class="fas fa-fw fa-memory" style="margin-right: 5px;"></i> 
+            <span class="lang-en">LLM Agent Memory</span>
+            <span class="lang-zh">大模型智能体记忆</span>
+          </li>
+          <li style="margin-bottom: 5px;">
+            <i class="fas fa-fw fa-network-wired" style="margin-right: 5px;"></i>
+            <span class="lang-en">Distributed Systems</span>
+            <span class="lang-zh">分布式系统</span>
+          </li>
         </ul>
       </div>
       {% if author.pubmed %}

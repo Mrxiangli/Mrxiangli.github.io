@@ -173,3 +173,70 @@
     .photo:hover img {
       transform: scale(1.1); // Zoom-in effect
     }
+/* --- Language Toggle & Visibility --- */
+
+// 1. Visibility Logic
+html.lang-en {
+  .lang-zh { display: none !important; }
+}
+
+html.lang-zh {
+  .lang-en { display: none !important; }
+}
+
+// 2. Toggle Button Styling
+.lang-toggle {
+  display: inline-block;
+  margin-left: 15px;
+  vertical-align: middle;
+  
+  a {
+    display: flex !important;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.8em !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    text-decoration: none !important;
+    color: inherit !important;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+
+    span {
+      padding: 0 2px;
+    }
+  }
+}
+
+// 3. Active Language Styling in Toggle
+html.lang-en .lang-toggle .en-label {
+  color: #333 !important;
+  font-weight: bold;
+}
+html.lang-en .lang-toggle .zh-label {
+  color: #999 !important;
+}
+
+html.lang-zh .lang-toggle .zh-label {
+  color: #333 !important;
+  font-weight: bold;
+}
+html.lang-zh .lang-toggle .en-label {
+  color: #999 !important;
+}
+
+// Divider between EN and 中
+.en-label::after {
+  content: "|";
+  margin-left: 6px;
+  color: #ccc;
+  font-weight: normal;
+}
+
+/* --- End Language Toggle --- */
