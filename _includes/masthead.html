@@ -22,6 +22,15 @@
             </a>
           </li>
         </ul>
+        <script>
+          function toggleLanguage() {
+            var html = document.documentElement;
+            var currentLang = html.classList.contains('lang-zh') ? 'en' : 'zh';
+            html.classList.remove('lang-en', 'lang-zh');
+            html.classList.add('lang-' + currentLang);
+            localStorage.setItem('site-lang', currentLang);
+          }
+        </script>
         <ul class="hidden-links hidden"></ul>
       </nav>
     </div>
