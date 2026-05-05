@@ -24,23 +24,31 @@
 
 <!-- end custom head snippets -->
 
+<style>
+  /* Ensure language visibility logic works immediately */
+  html.lang-en .lang-zh { display: none !important; }
+  html.lang-zh .lang-en { display: none !important; }
+  
+  /* Fallback: if no class is present yet, hide Chinese by default to avoid flash of both */
+  html:not(.lang-zh):not(.lang-en) .lang-zh { display: none !important; }
+</style>
+
 <script>
   // Language Toggle Logic
   (function() {
+    function applyLang(lang) {
+      document.documentElement.classList.remove('lang-en', 'lang-zh');
+      document.documentElement.classList.add('lang-' + lang);
+      localStorage.setItem('site-lang', lang);
+    }
+
+    // Initial load
     const savedLang = localStorage.getItem('site-lang') || 'en';
-    document.documentElement.classList.add('lang-' + savedLang);
+    applyLang(savedLang);
     
     window.toggleLanguage = function() {
-      const html = document.documentElement;
-      if (html.classList.contains('lang-en')) {
-        html.classList.remove('lang-en');
-        html.classList.add('lang-zh');
-        localStorage.setItem('site-lang', 'zh');
-      } else {
-        html.classList.remove('lang-zh');
-        html.classList.add('lang-en');
-        localStorage.setItem('site-lang', 'en');
-      }
+      const currentLang = document.documentElement.classList.contains('lang-zh') ? 'en' : 'zh';
+      applyLang(currentLang);
     };
   })();
 </script>
