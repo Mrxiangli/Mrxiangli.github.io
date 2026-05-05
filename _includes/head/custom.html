@@ -29,26 +29,22 @@
   html.lang-en .lang-zh { display: none !important; }
   html.lang-zh .lang-en { display: none !important; }
   
-  /* Fallback: if no class is present yet, hide Chinese by default to avoid flash of both */
+  /* Fallback: if no class is present yet, hide Chinese by default */
   html:not(.lang-zh):not(.lang-en) .lang-zh { display: none !important; }
 </style>
 
 <script>
-  // Language Toggle Logic
-  (function() {
-    function applyLang(lang) {
-      document.documentElement.classList.remove('lang-en', 'lang-zh');
-      document.documentElement.classList.add('lang-' + lang);
-      localStorage.setItem('site-lang', lang);
-    }
+  // Initial Language Load (Run immediately)
+  var savedLang = localStorage.getItem('site-lang') || 'en';
+  document.documentElement.classList.add('lang-' + savedLang);
 
-    // Initial load
-    const savedLang = localStorage.getItem('site-lang') || 'en';
-    applyLang(savedLang);
+  // Global Toggle Function
+  function toggleLanguage() {
+    var html = document.documentElement;
+    var currentLang = html.classList.contains('lang-zh') ? 'en' : 'zh';
     
-    window.toggleLanguage = function() {
-      const currentLang = document.documentElement.classList.contains('lang-zh') ? 'en' : 'zh';
-      applyLang(currentLang);
-    };
-  })();
+    html.classList.remove('lang-en', 'lang-zh');
+    html.classList.add('lang-' + currentLang);
+    localStorage.setItem('site-lang', currentLang);
+  }
 </script>
