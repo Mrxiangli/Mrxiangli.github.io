@@ -2,7 +2,7 @@
 title: "Embodied Task Planning via Graph-Informed Action Generation with Large Language Model"
 collection: publications
 date: 2026-1-26   
-venue: arXiv
+venue: To be appeared in 43rd International Conference on Machine Learning (ICML'26)
 paperurl: 'https://www.arxiv.org/abs/2601.21841'
 codeurl: ''
 authors: Xiang Li, Ning Yan, Masood Mortazavi
