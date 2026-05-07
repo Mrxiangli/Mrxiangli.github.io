@@ -10,10 +10,10 @@ layout: single
 ---
 
 <div class="lang-en">
-  I am a Computer Engineering Ph.D. student at Purdue University, specializing in Systems for Machine Learning. My research at the Dependable Computing System Lab focuses on optimizing large language model (LLM) inference on GPU clusters and developing efficient AI solutions for resource-constrained embedded devices. During my internship at Futurewei Technologies, I worked on agent memory architectures and planning.
+  I am a Computer Engineering Ph.D student at Purdue University advised by Professor Saurabh Bagchi, specializing in Systems for Machine Learning. My research at the <a href="https://engineering.purdue.edu/dcsl/" target="_blank" style="text-decoration: none;">Dependable Computing System Lab</a> focuses on optimizing large language model (LLM) inference on GPU clusters and developing efficient AI solutions for resource-constrained embedded devices. During my internship at Futurewei Technologies, I worked on agent memory architectures and planning.
 </div>
 <div class="lang-zh">
-  我是普渡大学计算机工程专业的博士生，专注于机器学习系统。我在可靠计算系统实验室（DCSL）的研究重点是优化 GPU 集群上的大语言模型（LLM）推理，并为资源受限的嵌入式设备开发高效的 AI 解决方案。在 Futurewei Technologies 实习期间，我参与了智能体记忆架构和规划的研究工作。
+  我是普渡大学计算机工程专业的博士生，专注于机器学习系统。我在<a href="https://engineering.purdue.edu/dcsl/" target="_blank" style="text-decoration: none;">可靠计算系统实验室（DCSL）</a>的研究重点是优化 GPU 集群上的大语言模型（LLM）推理，并为资源受限的嵌入式设备开发高效的 AI 解决方案。在 Futurewei Technologies 实习期间，我参与了智能体记忆架构和规划的研究工作。
 </div>
 
 ## <span class="lang-en">📰 News</span><span class="lang-zh">📰 最新动态</span>
