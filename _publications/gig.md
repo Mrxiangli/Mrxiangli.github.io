@@ -1,5 +1,5 @@
 ---
-title: "Embodied Task Planning via Graph-Informed Action Generation with Large Language Model"
+title: "Embodied Task Planning via Graph-Informed Action Generation with Large Language Models"
 collection: publications
 date: 2026-1-26   
 venue: 43rd International Conference on Machine Learning (ICML'26), Seoul, South Korea
