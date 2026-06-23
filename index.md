@@ -38,7 +38,8 @@ layout: single
  <div class="experience-item">
     <div class="exp-info">
       <span class="lang-en"><span class="exp-role">AI/ML System Research Intern</span>, <span class="exp-company">Nokia Bell Lab, Murray Hill, New Jersey</span></span>
-      <span class="lang-zh"><span class="exp-role">AI/ML系统研究实习生</span>, <span class="exp-company">诺基亚贝尔实验室, 纽泽西州莫里山</span></span>
+      <span class="lang-zh"><span class="exp-role">AI/ML系统研究实习生</span>, <span 
+      class="exp-company">贝尔实验室, 纽泽西州莫里山</span></span>
     </div>
     <div class="exp-date">
       <span class="lang-en">May 2026 – Aug 2026</span>
