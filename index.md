@@ -35,6 +35,16 @@ layout: single
 
 ## <span class="lang-en">💼 Professional Experience</span><span class="lang-zh">💼 职业经历</span>
 <div class="experience-container">
+ <div class="experience-item">
+    <div class="exp-info">
+      <span class="lang-en"><span class="exp-role">AI/ML System Research Intern</span>, <span class="exp-company">Nokia Bell Lab, Murray Hill, New Jersey</span></span>
+      <span class="lang-zh"><span class="exp-role">AI/ML系统研究实习生</span>, <span class="exp-company">诺基亚贝尔实验室, 纽泽西州莫里山</span></span>
+    </div>
+    <div class="exp-date">
+      <span class="lang-en">May 2026 – Aug 2026</span>
+      <span class="lang-zh">2026年5月 – 2026年8月</span>
+    </div>
+  </div>
   <div class="experience-item">
     <div class="exp-info">
       <span class="lang-en"><span class="exp-role">ML Algorithm Intern</span>, <span class="exp-company">Futurewei Technologies, San Jose, California</span></span>
