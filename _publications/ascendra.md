@@ -1,8 +1,8 @@
 ---
-title: "Ascendra: Dynamic Request Prioritization for Efficient LLM Serving"
+title: "PaceServe: Priority-Adaptive Coordinated Execution for LLM Inference Tasks"
 collection: publications
-date: 2025-4-25   
-venue: 'arXiv Preprint'
+date: 2026-08-28   
+venue: 'ACM Middleware 2026'
 paperurl: 'https://arxiv.org/abs/2504.20828'
 codeurl: ''
 authors: Xiang Li*, Azam Ikram*, Sameh Elnikety, Saurabh Bagchi
