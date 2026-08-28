@@ -2,7 +2,7 @@
 title: "PaceServe: Priority-Adaptive Coordinated Execution for LLM Inference Tasks"
 collection: publications
 date: 2026-08-28   
-venue: 'ACM Middleware 2026'
+venue: 'ACM Middleware'
 paperurl: 'https://arxiv.org/abs/2504.20828'
 codeurl: ''
 authors: Xiang Li*, Azam Ikram*, Sameh Elnikety, Saurabh Bagchi
