@@ -16,7 +16,7 @@ layout: single
   我是普渡大学计算机工程专业的博士生，专注于机器学习系统。我在<a href="https://engineering.purdue.edu/dcsl/" target="_blank" style="text-decoration: none;">可靠计算系统实验室（DCSL）</a>的研究重点是优化 GPU 集群上的大语言模型（LLM）推理，并为资源受限的嵌入式设备开发高效的 AI 解决方案。在 Futurewei Technologies 实习期间，我参与了智能体记忆架构和规划的研究工作。
 </div>
 
-## <span class="lang-en">📰 News</span><span class="lang-zh">📰 最新动态</span>
+## <span class="lang-en">News</span><span class="lang-zh">最新动态</span>
 <div class="news-container">
   {% for item in site.data.news limit:5 %}
     <div class="news-item">
@@ -29,11 +29,11 @@ layout: single
   {% endfor %}
 </div>
 
-## <span class="lang-en">🎓 Education</span><span class="lang-zh">🎓 教育背景</span>
+## <span class="lang-en">Education</span><span class="lang-zh">教育背景</span>
 *   <span class="lang-en">Ph.D. in Computer Engineering, Purdue University, 2021 – Present</span><span class="lang-zh">普渡大学，计算机工程博士，2021 至今</span>
 *   <span class="lang-en">B.S. in Computer Engineering (with Distinction), Purdue University, 2019</span><span class="lang-zh">普渡大学，计算机工程学士（优秀毕业生），2019</span>
 
-## <span class="lang-en">💼 Professional Experience</span><span class="lang-zh">💼 职业经历</span>
+## <span class="lang-en">Professional Experience</span><span class="lang-zh">职业经历</span>
 <div class="experience-container">
  <div class="experience-item">
     <div class="exp-info">
@@ -79,7 +79,7 @@ layout: single
 </div>
 
 
-## <span class="lang-en">📚 Publications</span><span class="lang-zh">📚 发表论文</span>
+## <span class="lang-en">Publications</span><span class="lang-zh">发表论文</span>
 <div class="featured-publications">
   {% if site.publications %}
     {% assign sorted_pubs = site.publications | sort: 'date' | reverse %}
