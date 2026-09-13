@@ -86,7 +86,7 @@
   };
 
   function init() {
-    let nekoFile = "/assets/images/oneko.gif"
+    let nekoFile = "/assets/images/oneko-tabby.svg"
     const curScript = document.currentScript
     if (curScript && curScript.dataset.cat) {
       nekoFile = curScript.dataset.cat
@@ -120,7 +120,7 @@
     nekoEl.style.height = "32px";
     nekoEl.style.position = "fixed";
     nekoEl.style.pointerEvents = "none";
-    nekoEl.style.imageRendering = "pixelated";
+    nekoEl.style.imageRendering = /\.svg(?:[?#]|$)/i.test(nekoFile) ? "auto" : "pixelated";
     nekoEl.style.transform = "scale(1.5)";
     nekoEl.style.left = `${nekoPosX - 16}px`;
     nekoEl.style.top = `${nekoPosY - 16}px`;
@@ -264,7 +264,9 @@
     direction += diffY / distance < -0.5 ? "S" : "";
     direction += diffX / distance > 0.5 ? "W" : "";
     direction += diffX / distance < -0.5 ? "E" : "";
-    setSprite(direction, frameCount);
+    // Hold each side-view stride for two ticks without slowing cursor tracking.
+    const strideFrame = /[EW]/.test(direction) ? Math.floor(frameCount / 2) : frameCount;
+    setSprite(direction, strideFrame);
 
     nekoPosX -= (diffX / distance) * nekoSpeed;
     nekoPosY -= (diffY / distance) * nekoSpeed;
