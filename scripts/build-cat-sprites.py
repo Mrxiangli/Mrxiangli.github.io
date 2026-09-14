@@ -53,9 +53,9 @@ def running_cat(kind, frame):
         s += path(tail, stroke=OUTLINE, width=3)
         s += path(tail, stroke='#91938e', width=1.9)
         s += path('M23 26 L25 27 M24 23 L26 23', stroke='#555d54')
+        s += f'<g transform="translate(2 {frame}) scale(.88)">' + face(back=True) + '</g>'
         if kind == 'S':
-            s += path('M12 18 L12 25 Q16 29 20 25 L20 18Z', '#faf8ef', 'none')
-        s += f'<g transform="translate(2 {frame}) scale(.88)">' + face(kind == 'N') + '</g>'
+            s = f'<g transform="rotate(180 16 16)">{s}</g>'
         return s
 
     # Rounded silhouette adapted from cat-reference/side-view-concept.png.
